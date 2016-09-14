@@ -1,0 +1,56 @@
+<div class="jumbotron" id="plans-img">
+	<div class="container">
+		<div id="plans-title">
+			Hydration Plans
+			<p><small>Follow the plan guide to find out the best plan for you.</small></p>
+		</div>
+		<div class="col-sm-12" id="plans">
+			<h4>Plan Guide</h4>
+			<div class="col-sm-4">
+				<div class="plan-guide">
+					<h5>1. Calculate your daily water intake.</h5>
+					<div id="calculator">
+						<form class="form-horizontal" ng-submit="calculateIntake()">
+							<div class="form-group form-group-sm">
+								<label for="weight" class="col-sm-5 control-label">Weight</label>
+								<div class="col-sm-6">
+									<div class="input-group input-group-sm">
+										<input type="number" min="0" max="999" id="weight" class="form-control" ng-model="weight">
+										<div class="input-group-addon">lbs.</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group form-group-sm">
+								<label for="lvl" class="col-sm-5 control-label">Hydration Level</label>
+								<div class="col-sm-6">
+									<select id="lvl" class="form-control" ng-model="level">
+										<option value="0.5">Minimum</option>
+										<option value="0.8">Moderate</option>
+										<option value="1.1">Maximum</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-group-sm">
+								<div class="col-sm-offset-4">
+								<button type="submit" class="btn btn-default btn-sm col-sm-4">Enter</button>
+								</div>
+							</div>
+						</form>
+						<div id="result" ng-show="calculated">
+							<h5>Your daily intake is <strong>{{intake}}</strong> oz.</h5>	 
+					 	</div>
+					</div> 	
+				</div>
+			</div>
+			<div class="col-sm-4" ng-show="step2">
+				<div class="plan-guide">
+					<h5>2. Choose a delivery plan.</h5>
+				</div>
+			</div>
+			<div class="col-sm-4" ng-show="step3">
+				<div class="plan-guide">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

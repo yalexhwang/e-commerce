@@ -1,0 +1,7 @@
+/* line 1, ../../sass/views/signin.scss */
+#signin-img {
+  margin-top: 20px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7)), url("../images/main-jbtr.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+}

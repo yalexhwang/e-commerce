@@ -1,0 +1,130 @@
+/* line 1, ../../sass/views/main.scss */
+#main-img {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/main-jbtr.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0px;
+  padding-bottom: 0px;
+}
+/* line 8, ../../sass/views/main.scss */
+#main-img #title {
+  text-align: right;
+  opacity: 1;
+  font-size: 47px;
+  -webkit-animation: fadein 4s;
+  -moz-transition: fadein 4s;
+  -o-transition: fadein 4s;
+  -ms-transition: fadein 4s;
+  transition: fadein 4s;
+}
+/* line 18, ../../sass/views/main.scss */
+#main-img #title .title-menu {
+  font-size: 18px;
+  font-family: "Robato", sans-serif;
+  margin-top: 200px;
+  -webkit-animation: fadein 4s;
+  -moz-transition: fadein 4s;
+  -o-transition: fadein 4s;
+  -ms-transition: fadein 4s;
+  transition: fadein 4s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* line 55, ../../sass/views/main.scss */
+.how {
+  margin: 20px;
+  height: 200px;
+  border-radius: 8px;
+  background-color: white;
+  padding: 20px;
+  font-family: 'Roboto', arial, sans-serif;
+  -webkit-animation: fadein 3s;
+  -moz-transition: fadein 3s;
+  -o-transition: fadein 3s;
+  -ms-transition: fadein 3s;
+  transition: fadein 3s;
+  transition-delay: 2s;
+}
+
+/* line 70, ../../sass/views/main.scss */
+.how.ng-show {
+  opacity: 1;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
