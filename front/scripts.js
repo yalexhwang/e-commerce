@@ -1,4 +1,4 @@
-var shopApp = angular.module('shopApp', ['ngRoute', 'ngCookies', 'duScroll']);
+var shopApp = angular.module('shopApp', ['ngRoute', 'ngCookies', 'duScroll', 'ui.bootstrap']);
 
 var url = "http://localhost:3000/";
 
@@ -33,6 +33,7 @@ shopApp.factory('userDataFactory', ['$http', '$q', function($http, $q) {
 
 shopApp.controller('indexCtrl', function($scope) {
 	$scope.loggedIn = 0;
+	$scope.isCollapsed = 1;
 });
 
 shopApp.config(function($routeProvider) {
@@ -41,9 +42,9 @@ shopApp.config(function($routeProvider) {
 		templateUrl: 'temp-views/main.html',
 		controller: 'mainCtrl'
 	})
-	.when('/plans', {
-		templateUrl: 'temp-views/plans.html',
-		controller: 'plansCtrl'
+	.when('/store', {
+		templateUrl: 'temp-views/store.html',
+		controller: 'storeCtrl'
 	})
 	.when('/register', {
 		templateUrl: 'temp-views/register.html',
@@ -56,6 +57,10 @@ shopApp.config(function($routeProvider) {
 	.when('/account', {
 		templateUrl: 'temp-views/account.html',
 		controller: 'accountCtrl'
+	})
+	.when('/payment', {
+		templateUrl: 'temp-views/payment.html',
+		controller: 'paymentCtrl'
 	})
 	.otherwise({
 		redirectTo: '/'

@@ -1,0 +1,39 @@
+<div class="container-fluid" id="background">
+
+	<h2 id="store-title">Store</h2>
+	<div class="row">
+		<div class="store-wrapper">
+			<div class="store">
+				<div ng-repeat="item in products track by $index" class="col-sm-6 col-md-4 col-lg-3 item">
+				 	<img class="item-img" ng-src="{{item.img[0]}}">
+				 	<div class="item-title">
+				 		<strong>{{item.name}}</strong><br/>{{item.oz}}fl. oz., {{item.package.type}} of {{item.package.qty}}
+				 	</div>
+				 	<div class="item-price">$ {{item.price}}</div>
+				 	<div class="item-add">
+				 		<span class="glyphicon glyphicon-minus" ng-click="removeItem($index)"></span>
+				 		<input type="text" ng-model="itemQty" ng-init="counter = 0" placeholder="{{item.counter}}" readonly>
+				 		<span class="glyphicon glyphicon-plus" ng-click="addItem($index)"></span>
+				 	</div>
+				 	
+				</div>
+			</div>
+		</div>
+	</div>
+		
+<!-- 		<div id="waterGoal">
+			<h6><span class="glyphicon glyphicon-ok-sign"></span> Current Water Supply</h6>
+			<div id="progress"></div>
+			<h4>{{current}} of {{goal}} fl. oz</h4>
+		</div> -->
+		
+		
+	<div id="cart-wrapper" class="col-sm-12">
+		<h2>Cart</h2>
+		<ul ng-repeat="item in cartArr track by $index">
+			<li>{{item.name}}, {{}}</li>
+		</ul>
+		{{totalAmount}} dollars
+	</div>
+
+</div>
