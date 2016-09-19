@@ -1,5 +1,5 @@
 /* line 1, ../sass/views/main.scss */
-#jumbo {
+#main-jumbotron {
   background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,11 +8,11 @@
   padding: 0px;
 }
 /* line 10, ../sass/views/main.scss */
-#jumbo #jumbo-box-wrapper {
+#main-jumbotron #jumbo-box-wrapper {
   margin-top: 30px;
 }
 /* line 13, ../sass/views/main.scss */
-#jumbo .jumbo-box {
+#main-jumbotron .jumbo-box {
   text-align: center;
   opacity: 1;
   -webkit-animation: fadein 4s;
@@ -22,30 +22,30 @@
   transition: fadein 4s;
 }
 /* line 23, ../sass/views/main.scss */
-#jumbo .imgOn {
+#main-jumbotron .imgOn {
   background-image: url("../images/water-in-body.png");
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.8;
 }
 /* line 29, ../sass/views/main.scss */
-#jumbo #title {
+#main-jumbotron #title {
   text-align: center;
   margin-bottom: 30px;
 }
 /* line 32, ../sass/views/main.scss */
-#jumbo #title h1 {
+#main-jumbotron #title h1 {
   font-family: 'Oxygen', sans-serif;
 }
 /* line 35, ../sass/views/main.scss */
-#jumbo #title p {
+#main-jumbotron #title p {
   font-size: 16px;
   font-weight: 300;
   margin-top: 300px;
   text-shadow: white 0px 0px 6px;
 }
 /* line 43, ../sass/views/main.scss */
-#jumbo .title-menu {
+#main-jumbotron .title-menu {
   font-weight: 200;
   font-color: black;
   font-size: 18px;
@@ -53,15 +53,15 @@
   margin-top: 10px;
 }
 /* line 52, ../sass/views/main.scss */
-#jumbo a {
+#main-jumbotron a {
   color: black;
 }
 /* line 56, ../sass/views/main.scss */
-#jumbo a:hover {
+#main-jumbotron a:hover {
   font-weight: 300px;
 }
 /* line 59, ../sass/views/main.scss */
-#jumbo .menuOn {
+#main-jumbotron .menuOn {
   font-weight: 200px;
 }
 
@@ -149,6 +149,11 @@
 /* line 130, ../sass/views/main.scss */
 #calculator {
   margin-top: 20px;
+}
+
+/* line 134, ../sass/views/main.scss */
+#result {
+  font-size: 16px;
 }
 
 @keyframes fadein {
@@ -291,14 +296,14 @@
     opacity: 1;
   }
 }
-/* line 218, ../sass/views/main.scss */
+/* line 222, ../sass/views/main.scss */
 .top {
   font-size: 25px;
   margin-top: 10px;
 }
 
 /* line 1, ../sass/views/signin.scss */
-#signin-img {
+#page-signin {
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -311,8 +316,13 @@
   font-family: 'Oxygen', sans-serif;
 }
 
+/* line 13, ../sass/views/signin.scss */
+#error {
+  padding: 10px;
+}
+
 /* line 1, ../sass/views/register.scss */
-#register-img {
+#page-register {
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -326,7 +336,7 @@
 }
 
 /* line 12, ../sass/views/register.scss */
-#registration {
+#registration-form {
   margin-bottom: 20px;
 }
 
@@ -338,73 +348,212 @@
 }
 
 /* line 1, ../sass/views/store.scss */
-#background {
+#page-store {
   background-color: #dcf1f6;
+  min-height: 100vh;
 }
 
-/* line 18, ../sass/views/store.scss */
+/* line 7, ../sass/views/store.scss */
+#goal {
+  width: 205px;
+  position: fixed;
+  padding: 15px;
+  z-index: 10;
+  opacity: 0.7;
+  border-radius: 8px;
+  border: 3px solid #3deaaf;
+  background-color: #9ffbdc;
+  margin-left: -20px;
+  margin-top: 12px;
+  font-color: black;
+  font-size: 13px;
+  font-family: "Oxygen", sans-serif;
+}
+
+/* line 23, ../sass/views/store.scss */
+#goal-title {
+  font-size: 15px;
+  color: black;
+}
+
+/* line 28, ../sass/views/store.scss */
+#goal-body-1 {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 16px;
+  font-color: black;
+}
+
+/* line 35, ../sass/views/store.scss */
+#goal-body-2 {
+  padding-left: 13px;
+  padding-top: 10px;
+  font-color: black;
+  font-size: 14px;
+}
+
+/* line 42, ../sass/views/store.scss */
 #store-title {
   text-align: center;
   font-family: "Oxygen", sans-serif;
-  margin: 30px 40px;
+  margin: 30px 20px 5px 20px;
 }
 
-/* line 24, ../sass/views/store.scss */
-.store-wrapper {
+/* line 48, ../sass/views/store.scss */
+#store-wrapper {
   width: 90%;
   margin: auto;
 }
 
-/* line 29, ../sass/views/store.scss */
-.store {
+/* line 53, ../sass/views/store.scss */
+#button-cart-wrapper {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* line 57, ../sass/views/store.scss */
+#store {
   font-family: 'Roboto', sans-serif;
   display: inline-block;
   background-color: white;
   padding: 30px 25px;
   border-radius: 8px;
   text-align: center;
+  margin-bottom: 50px;
 }
 
-/* line 39, ../sass/views/store.scss */
+/* line 67, ../sass/views/store.scss */
 .item {
   display: inline-block;
   height: 300px;
   padding: 10px;
-  margin: 10px auto;
+  margin: 30px auto;
   float: none !important;
   min-width: 220px;
   text-align: center;
 }
 
-/* line 49, ../sass/views/store.scss */
+/* line 77, ../sass/views/store.scss */
 .item-img {
   height: 60%;
   margin: auto;
 }
 
-/* line 54, ../sass/views/store.scss */
+/* line 82, ../sass/views/store.scss */
 .item-title {
-  margin: 10px 15px;
+  margin: 20px 10px 10px 10px;
   font-size: 15px;
   line-height: 18px;
 }
 
-/* line 59, ../sass/views/store.scss */
+/* line 88, ../sass/views/store.scss */
 .item-price {
   font-size: 16px;
 }
 
-/* line 6, ../sass/styles.scss */
+/* line 92, ../sass/views/store.scss */
+.item-buy {
+  margin: 10px;
+}
+
+/* line 96, ../sass/views/store.scss */
+#display {
+  width: 40px;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 2px;
+  border: 2px solid #6f88a5;
+  margin: 0px 5px;
+}
+
+/* line 1, ../sass/views/cart.scss */
+#page-cart {
+  background-color: #dcf1f6;
+  min-height: 100vh;
+}
+
+/* line 7, ../sass/views/cart.scss */
+#cart-wrapper {
+  margin: 20px 15px 35px 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 12, ../sass/views/cart.scss */
+#cart {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  min-width: 390px;
+}
+
+/* line 19, ../sass/views/cart.scss */
+#button-wrapper {
+  text-align: center;
+}
+/* line 21, ../sass/views/cart.scss */
+#button-wrapper .cart-button {
+  margin: 5px 10px 20px 10px;
+}
+
+/* line 25, ../sass/views/cart.scss */
+.pq {
+  text-align: center;
+  width: 10%;
+}
+
+/* line 29, ../sass/views/cart.scss */
+.ttl {
+  width: 12%;
+  text-align: center;
+}
+
+/* line 33, ../sass/views/cart.scss */
+.cart-img-cell {
+  text-align: center;
+}
+
+/* line 36, ../sass/views/cart.scss */
+.cart-img {
+  max-width: 90%;
+  max-height: 100px;
+  margin: 5px;
+}
+
+/* line 41, ../sass/views/cart.scss */
+.cart-qty-edit {
+  width: 65%;
+}
+
+/* line 1, ../sass/views/account.scss */
+#page-account {
+  background-color: #dcf1f6;
+  min-height: 100vh;
+}
+
+/* line 6, ../sass/views/account.scss */
+#account-wrapper {
+  margin: 30px auto;
+  border-radius: 8px;
+  background-color: white;
+  min-height: 90%;
+}
+
+/* line 8, ../sass/styles.scss */
 body {
   max-height: 100vh;
 }
 
-/* line 10, ../sass/styles.scss */
+/* line 12, ../sass/styles.scss */
 #nav {
   background-color: transparent;
   font-family: 'Lato', sans-serif;
 }
-/* line 13, ../sass/styles.scss */
+/* line 15, ../sass/styles.scss */
 #nav #brand {
   font-family: 'Oxygen', sans-serif;
+}
+
+/* line 24, ../sass/styles.scss */
+a {
+  color: inherit;
 }

@@ -1,5 +1,5 @@
 /* line 1, ../../sass/views/signin.scss */
-#signin-img {
+#page-signin {
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,4 +10,9 @@
 /* line 9, ../../sass/views/signin.scss */
 .page-header > h3 {
   font-family: 'Oxygen', sans-serif;
+}
+
+/* line 13, ../../sass/views/signin.scss */
+#error {
+  padding: 10px;
 }

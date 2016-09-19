@@ -1,16 +1,44 @@
-<!DOCTYPE html>
-<html ng-app="shopApp">
-<head>
-	<title></title>
+<div class="container-fluid" id="page-account">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div id="account-wrapper">
+				<div class="col-sm-3">
+					<div id="account-menu">
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="#">Account Home</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="#">My Cart</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<div id="account-main">
+						<div id="account-home">
+							<h3>My Info</h3>
+								<table class="table">
+									<tr>
+										<td>User Name</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>E-mail Address</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Password</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Address</td>
+										<td></td>
+									</tr>
 
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	<script type="text/javascript" src="accountCtrl.js"></script>
-</head>
-<body ng-controller="accountCtrl">
-	<h2>My Account</h2>
-	<div>
-		User Name: <br />
-
+								</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-</body>
-</html>
+</div>

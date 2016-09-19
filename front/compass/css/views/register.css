@@ -1,5 +1,5 @@
 /* line 1, ../../sass/views/register.scss */
-#register-img {
+#page-register {
   background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.9)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,7 +13,7 @@
 }
 
 /* line 12, ../../sass/views/register.scss */
-#registration {
+#registration-form {
   margin-bottom: 20px;
 }
 

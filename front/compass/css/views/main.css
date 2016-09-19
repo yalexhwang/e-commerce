@@ -1,5 +1,5 @@
 /* line 1, ../../sass/views/main.scss */
-#jumbo {
+#main-jumbotron {
   background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,11 +8,11 @@
   padding: 0px;
 }
 /* line 10, ../../sass/views/main.scss */
-#jumbo #jumbo-box-wrapper {
+#main-jumbotron #jumbo-box-wrapper {
   margin-top: 30px;
 }
 /* line 13, ../../sass/views/main.scss */
-#jumbo .jumbo-box {
+#main-jumbotron .jumbo-box {
   text-align: center;
   opacity: 1;
   -webkit-animation: fadein 4s;
@@ -22,30 +22,30 @@
   transition: fadein 4s;
 }
 /* line 23, ../../sass/views/main.scss */
-#jumbo .imgOn {
+#main-jumbotron .imgOn {
   background-image: url("../images/water-in-body.png");
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.8;
 }
 /* line 29, ../../sass/views/main.scss */
-#jumbo #title {
+#main-jumbotron #title {
   text-align: center;
   margin-bottom: 30px;
 }
 /* line 32, ../../sass/views/main.scss */
-#jumbo #title h1 {
+#main-jumbotron #title h1 {
   font-family: 'Oxygen', sans-serif;
 }
 /* line 35, ../../sass/views/main.scss */
-#jumbo #title p {
+#main-jumbotron #title p {
   font-size: 16px;
   font-weight: 300;
   margin-top: 300px;
   text-shadow: white 0px 0px 6px;
 }
 /* line 43, ../../sass/views/main.scss */
-#jumbo .title-menu {
+#main-jumbotron .title-menu {
   font-weight: 200;
   font-color: black;
   font-size: 18px;
@@ -53,15 +53,15 @@
   margin-top: 10px;
 }
 /* line 52, ../../sass/views/main.scss */
-#jumbo a {
+#main-jumbotron a {
   color: black;
 }
 /* line 56, ../../sass/views/main.scss */
-#jumbo a:hover {
+#main-jumbotron a:hover {
   font-weight: 300px;
 }
 /* line 59, ../../sass/views/main.scss */
-#jumbo .menuOn {
+#main-jumbotron .menuOn {
   font-weight: 200px;
 }
 
@@ -149,6 +149,11 @@
 /* line 130, ../../sass/views/main.scss */
 #calculator {
   margin-top: 20px;
+}
+
+/* line 134, ../../sass/views/main.scss */
+#result {
+  font-size: 16px;
 }
 
 @keyframes fadein {
@@ -291,7 +296,7 @@
     opacity: 1;
   }
 }
-/* line 218, ../../sass/views/main.scss */
+/* line 222, ../../sass/views/main.scss */
 .top {
   font-size: 25px;
   margin-top: 10px;

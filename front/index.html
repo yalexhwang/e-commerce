@@ -18,10 +18,10 @@
 	<script type="text/javascript" src="scripts.js"></script>
 	<script type="text/javascript" src="temp-ctrls/mainCtrl.js"></script>
 	<script type="text/javascript" src="temp-ctrls/storeCtrl.js"></script>
+	<script type="text/javascript" src="temp-ctrls/cartCtrl.js"></script>
 	<script type="text/javascript" src="temp-ctrls/accountCtrl.js"></script>
 	<script type="text/javascript" src="temp-ctrls/registerCtrl.js"></script>
 	<script type="text/javascript" src="temp-ctrls/signinCtrl.js"></script>
-	<script type="text/javascript" src="temp-ctrls/paymentCtrl.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.0/angular-scroll.min.js"></script>
 	<script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -45,14 +45,14 @@
 					<li><a ng-href="#/store">Store</a></li>
 					<li><a ng-href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 					<li ng-hide="loggedIn"><a ng-href="#/signin">Register/Sign In</a></li>
-					<li ng-show="loggedIn"><a ng-href="#/signout">My Account</a></li>
+					<li ng-show="loggedIn"><a ng-href="#/account">Account</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/signout">Sign Out</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div ng-view id="view">   
-  	{{message}}
+
 	</div>
 </body>
 </html>
