@@ -1,0 +1,121 @@
+<div class="container-fluid" id="page-account">
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1" id="account-wrapper">
+			<div>
+				<div class="col-sm-3">
+					<div id="account-menu">
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="#/#account-wrapper" du-smooth-scroll>Home</a></li>
+							<li><a href="#/#account-plan" du-smooth-scroll>My Plan</a></li>
+							<li><a href="#/#account-cart" du-smooth-scroll>My Cart</a></li>
+							<li><a href="#/#account-history" du-smooth-scroll>Order History</a></li>
+							
+							<li><a href="#">Help</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<div id="account-main">
+						<div id="account-home">
+							<h3>My Info <small><span class="glyphicon glyphicon-pencil" ng-click="edit()"></span></small></h3>
+								<div id="info-table-wrapper">
+									<table class="table">
+										<tr></tr>
+										<tr>
+											<td>User Name</td>
+											<td>{{user.username}}</td>
+										</tr>
+										<tr>
+											<td>E-mail Address</td>
+											<td>{{user.email}}</td>
+										</tr>
+										<tr>
+											<td>Password</td>
+											<td>**********</td>
+										</tr>
+										<tr>
+											<td>Address</td>
+											<td>
+												{{user.address.name}}<br/>
+												{{user.address.line1}} {{user.address.line2}}<br/>
+												{{user.address.city}}, {{user.address.state}}<br/>
+												{{user.address.zip}}
+											</td>
+										</tr>
+										<tr></tr>
+									</table>
+								</div>
+						</div>
+						<div id="account-plan" class="account-section">
+							<h3>My Plan <small><span class="glyphicon glyphicon-pencil" ng-click="edit()"></span></small></h3>
+							<div id="plan-table-wrapper">
+								<table class="table"> 
+									<tr>
+										<td>Total Supply (oz.)</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>Delivery Type</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td>//direct to order history!//</td>
+										<td></td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+						<div id="account-cart" class="account-section">
+							<h3>My Cart <small><span class="glyphicon glyphicon-pencil" ng-click="edit()"></span></small></h3>
+							<div id="cart-table-wrapper">
+								<div class="alert alert-info" ng-show="noCart">Go to <a href="#/cart">Cart</a> and click 'Save Cart' to see the current cart here.</div>
+								<table class="table" ng-hide="noCart" ng-repeat="item in myCart">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Item</th>
+											<th></th>
+											<th>Price</th>
+											<th>Quantity</th>
+											<th>Total</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>{{$index + 1}}</td>
+											<td><img class="cart-img" ng-src="{{item.img[0]}}"></td>
+											<td>{{item.name}}, {{item.oz}}fl. oz., {{item.package.type}} of {{item.package.qty}} </td>
+											<td class="pq">{{item.price}}</td>
+											<td class="pq" >
+												<span ng-hide="openPencil">{{item.cart.qty}}</span>
+												<span ng-show="openPencil">
+													<input type="number" min="0" class="cart-qty-edit" ng-model="$parent.qtyUpdated" ng-change="updated(this)">
+												</span>
+												<span class="glyphicon glyphicon-pencil" ng-click="qtyEdit(this)">
+													</span>
+											</td>
+											<td class="ttl" ng-model="itemTotal">$ {{item.cart.total}}</td>
+										</tr>
+										<tr class="info">
+											<td>Total</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="pq">{{cartTotalItems}}</td>
+											<td id="totalAmount" class="ttl">$ {{cartTotal}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="account-history" class="account-section">
+							<h3>Order History</h3>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

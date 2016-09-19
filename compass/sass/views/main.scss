@@ -1,0 +1,225 @@
+#main-jumbotron {
+	background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.6)), url('../images/main-jbtr.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 550px;
+	margin: 0px;
+	padding: 0px;
+
+	
+	#jumbo-box-wrapper {
+		margin-top: 30px;
+	}
+	.jumbo-box {
+		text-align: center;
+		opacity: 1;
+		-webkit-animation: fadein 4s;
+		-moz-transition: fadein 4s;
+		-o-transition: fadein 4s;
+		-ms-transition: fadein 4s;
+		transition: fadein 4s;
+
+	}
+	.imgOn {
+		background-image: url('../images/water-in-body.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		opacity: 0.8;
+	}
+		#title {
+				text-align: center;
+				margin-bottom: 30px;
+				h1 {
+					font-family: 'Oxygen', sans-serif;
+				}
+				p {
+					font-size: 16px;
+					font-weight: 300;
+					margin-top: 300px;
+					text-shadow: white 0px 0px 6px;
+				}	
+		}
+
+		.title-menu {
+			// font-family: "Lato", sans-serif;
+			font-weight: 200;
+			font-color: black;
+			font-size: 18px;
+			font-shadow: white 0px 0px 10px;
+			margin-top: 10px;
+		}
+
+		a {
+			color: black;
+		}
+
+		a:hover {
+			font-weight: 300px;
+		}
+		.menuOn {
+			font-weight: 200px;
+		}
+}
+
+#how-wrapper {
+	background-image: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.4)), url('../images/water-bottles.jpg');	
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	min-height: 700px;
+}
+#get-wrapper {
+	background-image: linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.4)), url('../images/water-bottles.jpg');	
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	min-height: 700px;
+}
+#how-wrapper, #get-wrapper {
+	padding: 0px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+#how-title {
+	margin-top: 250px;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: 200;
+}
+#get-title {
+	margin-top: 150px;
+	font-size: 20px;
+	font-weight: 200;
+}
+
+#how-title, #get-title {
+	-webkit-animation: bling 6s infinite;
+	-moz-transition: bling 6s infinite;
+	-o-transition: bling 6s infinite;
+	-ms-transition: bling 6s infinite;
+}
+
+.how-step {
+	height: 200px;
+}
+.get-step {
+	height: 370px;
+}
+.how-step, .get-step {
+	text-align: left;
+	margin: 20px;
+	padding: 15px 20px;
+	border-radius: 8px;
+	border: white 1px solid;
+	font-color: #181717;
+	-webkit-animation: appear 2s;
+	-moz-transition: appear 2s;
+	-o-transition: appear 2s;
+	-ms-transition: appear 2s;
+	transition: appear 2s;
+	webkit-animation-timing-function: ease-in;
+		p {
+			font-color: #4c4c4c;
+			font-size: 14px;
+			margin-top: 20px;
+		}
+}
+
+#calculator {
+	margin-top: 20px;
+
+}
+#result {
+	font-size: 16px;
+}
+
+	@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+	}
+
+	@-moz-keyframes fadein {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@-webkit-keyframes fadein {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@-ms-keyframes fadein {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@-o-keyframes fadein {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@keyframes appear {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+	}
+
+	@-moz-keyframes appear {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@-webkit-keyframes appear {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@-ms-keyframes appear {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@-o-keyframes appear {
+	    from { opacity: 0; }
+	    to   { opacity: 1; }
+	}
+
+	@keyframes bling {
+    0% { opacity: 0.2; }
+    50%   { opacity: 0.5;
+    				color: grey; }
+    100% { opacity: 1;}
+	}
+
+	@-moz-keyframes bling {
+	  0% { opacity: 0.2; }
+    50%   { opacity: 0.5; 
+    				color: grey; }
+    100% { opacity: 1;}
+	}
+
+	@-webkit-keyframes bling {
+	  0% { opacity: 0.2; }
+    50%   { opacity: 0.5; 
+    				color: grey; }
+    100% { opacity: 1;}
+	}
+
+	@-ms-keyframes bling {
+	  0% { opacity: 0.2; }
+    50%   { opacity: 0.5; 
+    				color: grey; }
+    100% { opacity: 1;}
+	}
+
+	@-o-keyframes bling {
+	  0% { opacity: 0.2; }
+    50%   { opacity: 0.5;
+    				color: grey; }
+    100% { opacity: 1;}
+	}
+.top {
+	font-size: 25px;
+	margin-top: 10px;
+}

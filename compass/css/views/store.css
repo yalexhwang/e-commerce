@@ -1,0 +1,118 @@
+/* line 1, ../../sass/views/store.scss */
+#page-store {
+  background-color: #dcf1f6;
+  min-height: 100vh;
+}
+
+/* line 7, ../../sass/views/store.scss */
+#goal {
+  width: 205px;
+  position: fixed;
+  padding: 15px;
+  z-index: 10;
+  opacity: 0.7;
+  border-radius: 8px;
+  border: 3px solid #3deaaf;
+  background-color: #9ffbdc;
+  margin-left: -20px;
+  margin-top: 12px;
+  font-color: black;
+  font-size: 13px;
+  font-family: "Oxygen", sans-serif;
+}
+
+/* line 23, ../../sass/views/store.scss */
+#goal-title {
+  font-size: 15px;
+  color: black;
+}
+
+/* line 28, ../../sass/views/store.scss */
+#goal-body-1 {
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 16px;
+  font-color: black;
+}
+
+/* line 35, ../../sass/views/store.scss */
+#goal-body-2 {
+  padding-left: 13px;
+  padding-top: 10px;
+  font-color: black;
+  font-size: 14px;
+}
+
+/* line 42, ../../sass/views/store.scss */
+#store-title {
+  text-align: center;
+  font-family: "Oxygen", sans-serif;
+  margin: 30px 20px 5px 20px;
+}
+
+/* line 48, ../../sass/views/store.scss */
+#store-wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+/* line 53, ../../sass/views/store.scss */
+#button-cart-wrapper {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* line 57, ../../sass/views/store.scss */
+#store {
+  font-family: 'Roboto', sans-serif;
+  display: inline-block;
+  background-color: white;
+  padding: 30px 25px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* line 67, ../../sass/views/store.scss */
+.item {
+  display: inline-block;
+  height: 300px;
+  padding: 10px;
+  margin: 30px auto;
+  float: none !important;
+  min-width: 220px;
+  text-align: center;
+}
+
+/* line 77, ../../sass/views/store.scss */
+.item-img {
+  height: 60%;
+  margin: auto;
+}
+
+/* line 82, ../../sass/views/store.scss */
+.item-title {
+  margin: 20px 10px 10px 10px;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+/* line 88, ../../sass/views/store.scss */
+.item-price {
+  font-size: 16px;
+}
+
+/* line 92, ../../sass/views/store.scss */
+.item-buy {
+  margin: 10px;
+}
+
+/* line 96, ../../sass/views/store.scss */
+#display {
+  width: 40px;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 2px;
+  border: 2px solid #6f88a5;
+  margin: 0px 5px;
+}

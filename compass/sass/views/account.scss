@@ -1,0 +1,35 @@
+#page-account {
+	background-color: #dcf1f6;
+	min-height: 100vh;
+}
+
+#account-menu {
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 13px;
+	padding-left: 0px;
+}
+#account-wrapper {
+	font-family: 'Robato', sans-serif;
+	margin-top: 40px;
+	padding: 20px;
+	border-radius: 8px;
+	background-color: white;
+	min-height: 90%;
+}
+
+.account-section {
+	margin-top: 40px;
+}
+#account-home {
+	h3 {
+		margin-top: 5px;
+	}
+}
+
+#info-table-wrapper{
+	width: 90%;
+}
+
+#cart-table-wrapper {
+	width: 90%;
+}

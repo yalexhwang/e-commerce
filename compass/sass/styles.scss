@@ -1,0 +1,23 @@
+@import 'views/main';
+@import 'views/signin';
+@import 'views/register';
+@import 'views/store';
+@import 'views/cart';
+@import 'views/account';
+
+body {
+	max-height: 100vh;
+	// min-width: 1200px;
+}
+#nav {
+	background-color: transparent;
+	font-family: 'Libre Franklin', sans-serif;
+	font-size: 13px;
+	#brand {
+	font-family: 'Oxygen', sans-serif;
+	}
+}
+
+#view {
+
+}

@@ -1,0 +1,30 @@
+<div class="container-fluid" id="page-cart">
+	<div id="goal">
+			<div id="goal-title"><span class="glyphicon glyphicon-ok-sign"></span>  <a ng-href="#/#get">Current Water Supply</a></div>
+			<div id="goal-body-1" ng-show="body1"><strong>{{currentOz}}</strong> of {{totalSupply}} fl. oz.</div>
+			<div id="goal-body-2" ng-show="body2">Please follow <strong><a href="#/#get">our guide</a></strong> to calculate your total water supply</div>
+	</div>
+	<h2 id="store-title">Store</h2>
+
+	<div class="row">
+		<div id="store-wrapper">
+			<div id="button-cart-wrapper">
+				<button type="button" id="button-cart" class="btn btn-default btn-md" ng-click="goToCart()"><span class="glyphicon glyphicon-shopping-cart"></span> View Cart</button>
+			</div>
+			<div id="store">
+				<div ng-repeat="item in products track by $index" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
+				 	<img class="item-img" ng-init="changingIndex = 0" ng-src="{{item.img[changingIndex]}}" ng-mouseenter="changingIndex = changingIndex + 1" ng-mouseleave="changingIndex = changingIndex - 1">
+				 	<div class="item-title">
+				 		<strong>{{item.name}}</strong><br/>{{item.oz}}fl. oz., {{item.package.type}} of {{item.package.qty}}
+					</div>
+				 	<div class="item-price">$ {{item.price}}</div>
+				 	<div class="item-buy">
+						<span class="glyphicon glyphicon-minus" ng-click="removeItem($index)"></span> 
+					 	<div id="display">{{item.cart.qty}}</div> 
+					 	<span class="glyphicon glyphicon-plus" ng-click="addItem($index)"></span>
+					 	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

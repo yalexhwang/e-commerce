@@ -1,0 +1,19 @@
+#page-register {
+	background-image: linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.9)), url('../images/main-jbtr.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+	font-family: 'Roboto', sans-serif;
+}
+
+.page-header > h3 {
+	font-family: 'Oxygen', sans-serif;
+}
+#registration-form {
+	margin-bottom: 20px;
+}
+#registered-info {
+	background-color: white;
+	border-radius: 8px;
+	padding: 25px 20px;
+}
