@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="shopApp">
+<head>
+	<title></title>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="register.js"></script>
+</head>
+<body ng-controller="registerCtrl">
+	<h2>Register</h2>
+	<form ng-submit="register()">
+		User Name <input type="text" minlength="4" maxlength="20" ng-model="username">
+		Password <input type="password" minlength="10" ng-model="password0">
+		Confirm Password <input type="password" minlength="10" ng-model="password1">
+		E-mail <input type="email" ng-model="email">
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>
