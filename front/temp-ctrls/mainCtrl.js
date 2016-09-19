@@ -2,7 +2,6 @@ shopApp.controller('mainCtrl', function($scope, $anchorScroll, $location, $cooki
 	$scope.step2 = 0;
 	$scope.step3 = 0;
 
-
 	$scope.jump = function(key) {
 		$anchorScroll(key);
 	};
@@ -53,7 +52,9 @@ shopApp.controller('mainCtrl', function($scope, $anchorScroll, $location, $cooki
 			console.log($scope.totalIntake);
 			$cookies.put('totalSupply', $scope.totalIntake);
 		}
-		
 	};
 
+	$scope.continueShopping = function() {
+		$location.path('/store');
+	}
 })

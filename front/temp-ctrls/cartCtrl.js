@@ -1,4 +1,4 @@
-shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location) {
+shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location, logInStatus) {
 	//cookies set for cartTotal and cartArr
 	var jsonCartArr = $cookies.getObject('cart');
 	console.log(jsonCartArr);
@@ -8,6 +8,19 @@ shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location) {
 	} else {
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
+	}
+
+	$scope.loggedIn = 0;
+	var logIn = logInStatus.getStatus();
+	console.log(logIn);
+	if (logIn) {
+		$scope.loggedIn = 1;
+	} else {
+		$scope.loggedIn = 0;
+	}
+
+	$scope.goToStore = function() {
+		$location.path('/store');
 	}
 	
 	$scope.openPencil = 0;
@@ -31,9 +44,7 @@ shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location) {
 		$scope.cartArr = [];
 		updateCart();
 	};
-
 	
-	$scope.goToCheckOut = "#"
 	$scope.checkOut = function() {
 		if ($scope.loggedIn) {
 			var handler = StripeCheckout.configure({
@@ -70,6 +81,26 @@ shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location) {
 			$location.path('/register');
 		}
 	}
+
+	$scope.saveMyCart = function() {
+		var userToken = $cookies.getObject('userToken');
+		var currentCart = $scope.cartArr;
+		var now = Date.now();
+		$http.post(url + 'save-my-cart', {
+			cart: {
+				cart: currentCart,
+				createdAt: now,
+			},
+			token: userToken.token
+		}).then(function success(rspns) {
+			console.log("Cart saved");
+			console.log(rspns);
+			$scope.saved = 1;
+		}, function fail(rspns) {
+			console.log("Cart not saved");
+			console.log(rspns);
+		});
+	};
 
 	function updateCart() {
 		var total = 0;

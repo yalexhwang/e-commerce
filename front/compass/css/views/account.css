@@ -5,9 +5,38 @@
 }
 
 /* line 6, ../../sass/views/account.scss */
+#account-menu {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 13px;
+  padding-left: 0px;
+}
+
+/* line 11, ../../sass/views/account.scss */
 #account-wrapper {
-  margin: 30px auto;
+  font-family: 'Robato', sans-serif;
+  margin-top: 40px;
+  padding: 20px;
   border-radius: 8px;
   background-color: white;
   min-height: 90%;
+}
+
+/* line 20, ../../sass/views/account.scss */
+.account-section {
+  margin-top: 40px;
+}
+
+/* line 24, ../../sass/views/account.scss */
+#account-home h3 {
+  margin-top: 5px;
+}
+
+/* line 29, ../../sass/views/account.scss */
+#info-table-wrapper {
+  width: 90%;
+}
+
+/* line 33, ../../sass/views/account.scss */
+#cart-table-wrapper {
+  width: 90%;
 }

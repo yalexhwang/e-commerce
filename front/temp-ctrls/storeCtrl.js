@@ -1,4 +1,4 @@
-shopApp.controller('storeCtrl', function($scope, $cookies, $http) {
+shopApp.controller('storeCtrl', function($scope, $cookies, $http, $location, logInStatus) {
 	var supplyOz = $cookies.get('totalSupply');
 	console.log(supplyOz);
 	$scope.currentOz = 0;
@@ -34,6 +34,9 @@ shopApp.controller('storeCtrl', function($scope, $cookies, $http) {
 		$scope.cartTotal = 0;
 	}
 
+	$scope.goToCart = function() {
+		$location.path('/cart');
+	}
 	$scope.products = [];
 	$http.post(url + 'products').then(function success(rspns) {
 		var all = rspns.data.obj;

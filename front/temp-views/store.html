@@ -9,7 +9,7 @@
 	<div class="row">
 		<div id="store-wrapper">
 			<div id="button-cart-wrapper">
-				<button type="button" id="button-cart" class="btn btn-default btn-md"><a href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> View Cart</a></button>
+				<button type="button" id="button-cart" class="btn btn-default btn-md" ng-click="goToCart()"><span class="glyphicon glyphicon-shopping-cart"></span> View Cart</button>
 			</div>
 			<div id="store">
 				<div ng-repeat="item in products track by $index" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">

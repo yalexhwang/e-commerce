@@ -1,53 +1,48 @@
 var shopApp = angular.module('shopApp', ['ngRoute', 'ngCookies', 'duScroll', 'ui.bootstrap']);
 var url = "http://localhost:3000/";
 
-// shopApp.factory('userDataFactory', ['$http', '$q', '$cookies', function($http, $q, $cookies) {
-// 	var userData = {};
-// 	userData.getData = function(inOrNot) {
-// 		var loggedIn = inOrNot;
-// 		var token = $cookies.get('token');
-// 		console.log(token);
-// 		if (token) {
-// 			console.log(token);
-// 			if (loggedIn) {
-// 				return true;
-// 			} else {
-// 				var now = Date.now();
-// 				var tokenTime = token.time;
-// 				if (now - tokenTime > 180000) {
-// 					$cookies.put('token', "");
-// 					return false;
-// 				} else {
-// 					return token;
-// 				}
-// 			}
-// 		} else {
-// 			var def = $q.defer();
-// 			$http.post(url + 'createToken')
-// 			.then(function success(rspns) {
-// 				console.log(rspns);
-// 				var token = {
-// 					token: rspns.data.token,
-// 					time: rspns.data.time
-// 				};
-// 				$cookies.put('token', token);
-// 				def.resolve(rspns);
-// 			}, function fail(rspns) {
-// 				console.log(rspns);
-// 				console.log("Failed to create a token");
-// 				def.reject(rspns);
-// 			});
-// 			return def.promise;
-// 		}
-// 	};
-// 	return userData;
-// }]);
+shopApp.factory('userDataFactory', ['$http', '$q', function($http, $q) {
+	var userData = {};
+	var def = $q.defer();
+	userData.getData = function(token) {
+		var userToken = token;
+		$http.post(url + 'getUser', {
+			userToken: userToken
+		}).then(function success(rspns) {
+			console.log("Succesfully retrieved user data");
+			def.resolve(rspns);
+		}, function fail(rspns) {
+			console.log("Failed to retrieve user data");
+			def.reject(rspns);
+		});
+		return def.promise;
+	}
+	return userData;
+}]);
 
-shopApp.controller('indexCtrl', function($scope) {
-	$scope.loggedIn = 0;
-	// $scope.loggedIn = 1;
+shopApp.service('logInStatus', function() {
+	var loggedIn = 0;
+	return {
+		setStatus: function(status) {
+			loggedIn = status;
+		},
+		getStatus: function() {
+			return loggedIn;
+		}
+	};
+});
+
+
+shopApp.controller('indexCtrl', function($scope, logInStatus) {
+	var logIn = logInStatus.getStatus();
+	console.log(logIn);
+
+	if (logIn === 1) {
+		$scope.loggedIn = 1;
+	} else {
+		$scope.loggedIn = 0;
+	}
 	$scope.isCollapsed = 1;
-	$scope.cartOpen = 0;
 });
 
 shopApp.config(function($routeProvider) {

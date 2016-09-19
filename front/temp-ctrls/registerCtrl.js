@@ -1,8 +1,10 @@
-
 shopApp.controller('registerCtrl', function($scope, $http) {
 	$scope.hideDBID = 1;
 	$scope.registered = 0;
 
+	if ($scope.loggedIn) {
+		$location.path('/account');
+	}
 	$scope.register = function() {
 		var username = "test";
 		var password = "1111111111";

@@ -117,7 +117,6 @@
 								<div ng-show="openDay">
 									<label for="day">On which day?</label>
 									<select class="form-control" id="day"  ng-model="dayForWeekly">
-										<option value="0" ng-click="openDate = 1">Sun</option>
 										<option value="1" ng-click="openDate = 1">Mon</option>
 										<option value="2" ng-click="openDate = 1">Tue</option>
 										<option value="3" ng-click="openDate = 1">Wed</option>
@@ -164,7 +163,7 @@
 						</tr>
 					</table>
 					<div>
-						<button type="button" class="btn btn-default"><a href="#/store">Continue Shopping</a></button>
+						<button type="button" class="btn btn-default" ng-click="continueShopping()">Continue Shopping</a></button>
 					</div>
 				</div>
 			</div>
