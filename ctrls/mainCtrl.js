@@ -51,6 +51,14 @@ shopApp.controller('mainCtrl', function($scope, $anchorScroll, $location, $cooki
 			}
 			console.log($scope.totalIntake);
 			$cookies.put('totalSupply', $scope.totalIntake);
+			var plan = {
+				supplyOz: $scope.totalIntake,
+				frequency: frequency,
+				option1: whichDay,
+				option2: howManyDays,
+				startDate: 
+			};
+			$cookies.putObject('userPlan', plan);
 		}
 	};
 

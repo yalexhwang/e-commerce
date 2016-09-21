@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var mongoUrl = "mongodb://localhost:27017/ecommerce";
+var mongoUrl = "mongodb://localhost:27017/hydrosource";
 var User = require('../models/user');
 var Item = require('../models/item');
 mongoose.connect(mongoUrl);
@@ -50,10 +50,15 @@ router.post('/save-my-cart', function(req, res, next) {
 router.post('/products', function(req, res, next) {
 	console.log(req.body);
 	Item.find({}, function(err, docs) {
-		console.log(docs);
-		res.json({
-			obj: docs
-		});
+		if (err) {
+			console.log("err------------");
+			console.log(err);
+		} else {
+			console.log(docs);
+			res.json({
+				obj: docs
+			});
+		}
 	});
 });
 
