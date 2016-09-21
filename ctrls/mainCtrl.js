@@ -56,7 +56,7 @@ shopApp.controller('mainCtrl', function($scope, $anchorScroll, $location, $cooki
 				frequency: frequency,
 				option1: whichDay,
 				option2: howManyDays,
-				startDate: 
+				startDate: starting
 			};
 			$cookies.putObject('userPlan', plan);
 		}
