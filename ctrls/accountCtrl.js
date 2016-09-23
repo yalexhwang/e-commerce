@@ -1,23 +1,8 @@
-shopApp.controller('accountCtrl', function($scope, $http, $cookies, $location, $anchorScroll, userDataFactory, logInStatus) {
-	var logIn = logInStatus.getStatus();
-	console.log("logIn: " + logIn);
-	if (logIn === 1) {
-		var userToken = $cookies.getObject('userToken');
-		console.log("userToken: " + userToken);
-		userDataFactory.getData(userToken)
-		.then(function success(rspns) {
-			console.log(rspns);
-			$scope.user = rspns.data.obj;
-			if ($scope.user.cart) {
-				$scope.myCart = $scope.user.cart.cart;
-				$scope.myCartCreatedAt = $scope.user.cart.createdAt;
-			} else {
-				$scope.noCart = 1;
-			}
-		}, function fail(rspns) {
-			console.log(rspns.data.passFail + ": " + rspns.data.status);
-			$location.path('/signin');
-		});
+shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $location, $anchorScroll) {
+	console.log($rootScope.loggedIn);
+	if ($rootScope.loggedIn) {
+		var user = $rootScope.userData;
+		$scope.user = user;
 	} else {
 		$location.path('/signin');
 	}

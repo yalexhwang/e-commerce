@@ -1,9 +1,10 @@
 @import 'views/main';
-@import 'views/signin';
-@import 'views/register';
 @import 'views/store';
 @import 'views/cart';
+@import 'views/signin';
+@import 'views/register';
 @import 'views/account';
+@import 'views/signout';
 
 body {
 	max-height: 100vh;

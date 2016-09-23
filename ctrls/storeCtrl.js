@@ -1,4 +1,4 @@
-shopApp.controller('storeCtrl', function($scope, $cookies, $http, $location, logInStatus) {
+shopApp.controller('storeCtrl', function($scope, $cookies, $http, $location) {
 	var supplyOz = $cookies.get('totalSupply');
 	console.log(supplyOz);
 	$scope.currentOz = 0;

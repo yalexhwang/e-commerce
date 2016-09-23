@@ -1,16 +1,11 @@
-shopApp.controller('signinCtrl', function($scope, $http, $location, $cookies, logInStatus) {
-	$scope.failed = 0;
-	var logIn = logInStatus.getStatus;
-	console.log(logIn);
-	if (logIn === 1) {
+shopApp.controller('signinCtrl', function($scope, $rootScope, $http, $location, $cookies, $anchorScroll) {
+	if ($rootScope.loggedIn) {
 		$location.path('/account');
-	} 
+	}
 
 	$scope.signin = function() {
-		// var username = $scope.username;
-		// var password = $scope.password;
-		var username = "test";
-		var password = "1111111111";
+		var username = $scope.username;
+		var password = $scope.password;
 		console.log(username + ", " + password);
 		$http.post(url + 'signin', {
 			username: username,
@@ -21,7 +16,6 @@ shopApp.controller('signinCtrl', function($scope, $http, $location, $cookies, lo
 				var userToken = rspns.data.obj.token;
 				console.log(userToken);
 				$cookies.putObject('userToken', userToken);
-				logInStatus.setStatus(1);
 				$location.path('/account'); 
 			} else {
 				console.log(rspns.data.status);

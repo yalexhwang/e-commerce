@@ -1,23 +1,16 @@
-shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location, logInStatus) {
-	//cookies set for cartTotal and cartArr
-	var jsonCartArr = $cookies.getObject('cart');
-	console.log(jsonCartArr);
-	if (jsonCartArr) {
+shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $location) {
+	var jsonCartArr;
+	if ($rootScope.loggedIn) {
+		jsonCartArr = $rootScope.userData.cart;
 		$scope.cartArr = jsonCartArr.cart;
-		updateCart();
+	} else if ($cookies.getObject('cart')) {
+		jsonCartArr = $cookies.getObject('cart');
+		$scope.cartArr = jsonCartArr.cart;
 	} else {
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
 	}
-
-	$scope.loggedIn = 0;
-	var logIn = logInStatus.getStatus();
-	console.log(logIn);
-	if (logIn) {
-		$scope.loggedIn = 1;
-	} else {
-		$scope.loggedIn = 0;
-	}
+	console.log(jsonCartArr);
 
 	$scope.goToStore = function() {
 		$location.path('/store');
@@ -46,7 +39,7 @@ shopApp.controller('cartCtrl', function($scope, $cookies, $http, $location, logI
 	};
 	
 	$scope.checkOut = function() {
-		if ($scope.loggedIn) {
+		if ($rootScope.loggedIn) {
 			var handler = StripeCheckout.configure({
 				key: 'pk_test_542jVkNp2tVTQmzjscWkHT7u',
 				image: null,

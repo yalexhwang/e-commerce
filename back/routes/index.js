@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var mongoUrl = "mongodb://localhost:27017/hydrosource";
+var mongoUrl = "mongodb://localhost:27017/ecommerce";
 var User = require('../models/user');
 var Item = require('../models/item');
 mongoose.connect(mongoUrl);
@@ -17,12 +17,40 @@ var stripe = require('stripe')(configT.secretTestKey);
 router.post('/getUser', function(req, res, next) {
 	var token = req.body.userToken;
 	User.findOne({'token': token}, function(err, docs) {
-		if (docs == null) {
+		if (err) {
+			console.log(err);
 			res.json({
 				passFail: 0,
-				status: "badToken"
+				status: "DB connection failed"
 			});
 		} else {
+			if (docs == null) {
+				res.json({
+					passFail: 0,
+					status: "badToken"
+				});
+			} else {
+				res.json({
+					passFail: 1,
+					obj: docs
+				});
+			}
+		}
+	});
+});
+
+router.post('/remove_token', function(req, res, next) {
+	var token = req.body.userToken;
+	console.log("remove_token: " + token);
+	User.findOneAndUpdate({'token': token}, {$set: {'token': ""}}, function(err, docs) {
+		if (err) { 
+			console.log(err);
+			res.json({
+				passFail: 0,
+				status: "DB connection failed"
+			}); 
+		} else {
+			console.log(docs);
 			res.json({
 				passFail: 1,
 				obj: docs

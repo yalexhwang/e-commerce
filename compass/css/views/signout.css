@@ -1,0 +1,14 @@
+/* line 1, ../../sass/views/signout.scss */
+#page-signout {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.7)), url("../images/main-jbtr.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+/* line 10, ../../sass/views/signout.scss */
+#bye {
+  margin-top: 40px;
+}

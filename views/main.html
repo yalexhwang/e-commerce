@@ -163,7 +163,9 @@
 						</tr>
 					</table>
 					<div>
-						<button type="button" class="btn btn-default" ng-click="continueShopping()">Continue Shopping</a></button>
+						<button type="button" class="btn btn-default" ng-show="loggedIn" ng-click="continueShopping()">Continue Shopping</button>
+						<button type="button" class="btn btn-default" ng-hide="loggedIn" ng-click="go_to_register()">Register</button>
+						<button type="button" class="btn btn-default" ng-hide="loggedIn" ng-click="go_to_signin()">Sign In</button>
 					</div>
 				</div>
 			</div>
