@@ -1,21 +1,22 @@
 shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $location) {
-	var jsonCartArr;
-	if ($rootScope.loggedIn) {
-		jsonCartArr = $rootScope.userData.cart;
-		$scope.cartArr = jsonCartArr.cart;
-	} else if ($cookies.getObject('cart')) {
-		jsonCartArr = $cookies.getObject('cart');
-		$scope.cartArr = jsonCartArr.cart;
+	var jsonCart;
+	if ($cookies.getObject('cart') && ($cookies.getObject('cart') !== undefined)) {
+		jsonCart = $cookies.getObject('cart');
+		console.log("cart found from $coookies");
+		console.log(jsonCart);
+		$scope.cartArr = jsonCart.items;
+		$scope.cartTotal = jsonCart.total;
+		$scope.cartTotalItems = jsonCart.qty;
+		$scope.currentOz = jsonCart.oz;
+		$scope.cartReady = 1;
 	} else {
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
+		$scope.cartTotalItems = 0;
+		$scope.currentOz = 0;
+		$scope.cartReady = 0;
 	}
-	console.log(jsonCartArr);
 
-	$scope.goToStore = function() {
-		$location.path('/store');
-	}
-	
 	$scope.openPencil = 0;
 	$scope.qtyEdit = function(that) {
 		that.openPencil = !that.openPencil;
@@ -29,70 +30,76 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 	$scope.updated = function(that) {
 		var index = that.$index;
 		$scope.cartArr[index].cart.qty = $scope.qtyUpdated;
-		$scope.cartArr[index].cart.total = $scope.cartArr[index].cart.qty * $scope.cartArr[index].price;
-		$scope.cartArr[index].cart.total =	$scope.cartArr[index].cart.total.toFixed(2);
-	}
+		var itemTotalUpdated = $scope.cartArr[index].cart.qty * $scope.cartArr[index].price;
+		$scope.cartArr[index].cart.total = itemTotalUpdated.toFixed(2);
+		updateCart();
+	};
 
+	//buttons below the cart
 	$scope.resetCart = function() {
 		$scope.cartArr = [];
 		updateCart();
 	};
-	
+	$scope.goToStore = function() {
+		$location.path('/store');
+	}
 	$scope.checkOut = function() {
-		if ($rootScope.loggedIn) {
-			var handler = StripeCheckout.configure({
-				key: 'pk_test_542jVkNp2tVTQmzjscWkHT7u',
-				image: null,
-				locale: 'auto',
-				token: function(token) {
-					console.log("Token ID: " + token.id);
-					$http.post('http://localhost:3000/stripe', {
-						amount: $scope.cartTotal * 100,
-						stripeToken: token.id,
-						token: $cookies.get('token')
-					}).then(function success(rspns) {
-						if (rspns.data.passFail) {
-							console.log(rspns);
-							console.log("Payment successful");
-							//Thank you user and redirect page
-						} else {
-							console.log(rspns.obj);
-							console.log("Payment failed");
-						}
-					}, function fail(rspns) {
-						console.log("Connection to payment failed");
+		var handler = StripeCheckout.configure({
+			key: 'pk_test_542jVkNp2tVTQmzjscWkHT7u',
+			image: null,
+			locale: 'auto',
+			token: function(token) {
+				console.log("Token ID: " + token.id);
+				$http.post('http://localhost:3000/stripe', {
+					amount: $scope.cartTotal * 100,
+					stripeToken: token.id,
+					token: $cookies.get('token')
+				}).then(function success(rspns) {
+					if (rspns.data.passFail) {
+						console.log(rspns);
+						console.log("Payment successful");
+						//Thank you user and redirect page
+					} else {
 						console.log(rspns.obj);
-					})
-				}
-			});
-			handler.open({
-				name: "HydroSource",
-				amount: $scope.cartTotal * 100,
-				description: "$scope.memberName's cart"
-			});
-		} else {
-			$location.path('/register');
-		}
+						console.log("Payment failed");
+					}
+				}, function fail(rspns) {
+					console.log("Connection to payment failed");
+					console.log(rspns.obj);
+				})
+			}
+		});
+		handler.open({
+			name: "HydroSource",
+			amount: $scope.cartTotal * 100,
+			description: "$scope.memberName's cart"
+		});
 	}
 
 	$scope.saveMyCart = function() {
+		updateCart();
 		var userToken = $cookies.getObject('userToken');
-		var currentCart = $scope.cartArr;
-		var now = Date.now();
-		$http.post(url + 'save-my-cart', {
-			cart: {
-				cart: currentCart,
-				createdAt: now,
-			},
-			token: userToken.token
-		}).then(function success(rspns) {
-			console.log("Cart saved");
-			console.log(rspns);
-			$scope.saved = 1;
-		}, function fail(rspns) {
-			console.log("Cart not saved");
-			console.log(rspns);
-		});
+		var cartToSave = {
+			items: $scope.cartArr,
+			qty: $scope.cartTotalItems,
+			total: $scope.cartTotal
+		};
+		console.log(cartToSave);
+		if (cartToSave.cart.length > 0) {
+			var now = Date.now();
+			$http.post(url + 'saveCart', {
+				cart: cartToSave,
+				token: userToken.token
+			}).then(function success(rspns) {
+				console.log("Cart saved");
+				console.log(rspns);
+				$scope.saved = 1;
+				$cookies.putObject('cart', '');
+			}, function fail(rspns) {
+				console.log("Cart not saved");
+				console.log(rspns);
+			});
+		} 
 	};
 
 	function updateCart() {
@@ -112,9 +119,17 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 			total2 += item.package.qty * item.oz * item.cart.qty;
 			return Math.round(total2);
 		}, total2);
+		if ($scope.cartArr.length > 0) {
+			$scope.cartReady = 1;
+		} else {
+			$scope.cartReady = 0;
+		}
 		console.log($scope.cartArr);
 		var jsonCartArr = {
-			cart: $scope.cartArr
+			cart: $scope.cartArr,
+			total: $scope.cartTotal,
+			qty: $scope.cartTotalItems,
+			oz: $scope.currentOz
 		};
 		$cookies.putObject('cart',jsonCartArr);
 	}

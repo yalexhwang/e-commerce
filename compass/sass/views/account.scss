@@ -1,35 +1,63 @@
 #page-account {
-	background-color: #dcf1f6;
 	min-height: 100vh;
+	background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.6)), url('../images/water-dewy.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 #account-menu {
 	font-family: 'Libre Franklin', sans-serif;
 	font-size: 13px;
 	padding-left: 0px;
+	margin-bottom: 40px;
 }
 #account-wrapper {
-	font-family: 'Robato', sans-serif;
+	font-family: 'Oxygen', sans-serif;
 	margin-top: 40px;
 	padding: 20px;
 	border-radius: 8px;
+	border: 1px solid #e1fcff;
 	background-color: white;
 	min-height: 90%;
+	h3 {
+		margin-top: 30px;
+		margin-bottom: 20px;
+	}
 }
 
 .account-section {
 	margin-top: 40px;
+	margin-bottom: 10px;
 }
 #account-home {
 	h3 {
 		margin-top: 5px;
 	}
+	margin-bottom: 10px;
 }
 
-#info-table-wrapper{
+#account-home-edit {
+	padding: 20px 10px 10px 5px;
+	border-radius: 8px;
+	background-color: #f4f4ff;
+	label {
+		font-size: 12px;
+	}
+}
+
+#info-table-wrapper {
 	width: 90%;
 }
-
+#plan-table-wrapper {
+	width: 90%;
+}
 #cart-table-wrapper {
 	width: 90%;
+}
+
+.updatedPlanInfo {
+	color: #b90000;
+}
+.updatedPlanMessage {
+	font-size: 13px;
 }

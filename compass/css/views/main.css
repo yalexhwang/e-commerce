@@ -3,7 +3,7 @@
   background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 550px;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
 }
@@ -44,116 +44,39 @@
   margin-top: 300px;
   text-shadow: white 0px 0px 6px;
 }
-/* line 43, ../../sass/views/main.scss */
-#main-jumbotron .title-menu {
-  font-weight: 200;
-  font-color: black;
-  font-size: 18px;
-  font-shadow: white 0px 0px 10px;
-  margin-top: 10px;
-}
-/* line 52, ../../sass/views/main.scss */
-#main-jumbotron a {
-  color: black;
-}
-/* line 56, ../../sass/views/main.scss */
-#main-jumbotron a:hover {
-  font-weight: 300px;
-}
-/* line 59, ../../sass/views/main.scss */
-#main-jumbotron .menuOn {
-  font-weight: 200px;
-}
 
-/* line 64, ../../sass/views/main.scss */
+/* line 44, ../../sass/views/main.scss */
 #how-wrapper {
-  background-image: linear-gradient(white, rgba(255, 255, 255, 0.4)), url("../images/water-bottles.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/blue.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
-  min-height: 700px;
-}
-
-/* line 71, ../../sass/views/main.scss */
-#get-wrapper {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/water-bottles.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  min-height: 700px;
-}
-
-/* line 78, ../../sass/views/main.scss */
-#how-wrapper, #get-wrapper {
-  padding: 0px;
+  padding-top: 400px;
   text-align: center;
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 84, ../../sass/views/main.scss */
+/* line 52, ../../sass/views/main.scss */
 #how-title {
-  margin-top: 250px;
-  padding-top: 25px;
-  padding-bottom: 10px;
-  font-size: 20px;
-  font-weight: 200;
+  font-family: 'Oxygen', sans-serif;
 }
 
-/* line 91, ../../sass/views/main.scss */
-#get-title {
-  margin-top: 150px;
-  font-size: 20px;
-  font-weight: 200;
-}
-
-/* line 97, ../../sass/views/main.scss */
-#how-title, #get-title {
-  -webkit-animation: bling 6s infinite;
-  -moz-transition: bling 6s infinite;
-  -o-transition: bling 6s infinite;
-  -ms-transition: bling 6s infinite;
-}
-
-/* line 104, ../../sass/views/main.scss */
+/* line 57, ../../sass/views/main.scss */
 .how-step {
   height: 200px;
-}
-
-/* line 107, ../../sass/views/main.scss */
-.get-step {
-  height: 370px;
-}
-
-/* line 110, ../../sass/views/main.scss */
-.how-step, .get-step {
   text-align: left;
   margin: 20px;
   padding: 15px 20px;
   border-radius: 8px;
   border: white 1px solid;
   font-color: #181717;
-  -webkit-animation: appear 2s;
-  -moz-transition: appear 2s;
-  -o-transition: appear 2s;
-  -ms-transition: appear 2s;
-  transition: appear 2s;
-  webkit-animation-timing-function: ease-in;
-}
-/* line 123, ../../sass/views/main.scss */
-.how-step p, .get-step p {
-  font-color: #4c4c4c;
-  font-size: 14px;
-  margin-top: 20px;
 }
 
-/* line 130, ../../sass/views/main.scss */
-#calculator {
-  margin-top: 20px;
-}
-
-/* line 134, ../../sass/views/main.scss */
-#result {
-  font-size: 16px;
+/* line 67, ../../sass/views/main.scss */
+.arrow {
+  font-size: 25px;
+  margin: 30px;
+  text-align: center;
+  bottom: 100px;
 }
 
 @keyframes fadein {
@@ -195,109 +118,4 @@
   to {
     opacity: 1;
   }
-}
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-moz-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-ms-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-o-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-moz-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-ms-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-o-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-/* line 222, ../../sass/views/main.scss */
-.top {
-  font-size: 25px;
-  margin-top: 10px;
 }

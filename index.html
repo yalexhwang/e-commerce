@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="ctrls/registerCtrl.js"></script>
 	<script type="text/javascript" src="ctrls/signinCtrl.js"></script>
 	<script type="text/javascript" src="ctrls/signoutCtrl.js"></script>
+	<script type="text/javascript" src="ctrls/calcCtrl.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-scroll/1.0.0/angular-scroll.min.js"></script>
 	<script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -43,8 +44,9 @@
 			</div>
 			<div id="navbar-collapse-1" class="navbar-collapse collapse in" collapse="isCollapsed" aria-expanded="true">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a ng-href="#/store">Store</a></li>
-					<li><a ng-href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+					<li ng-hide="loggedIn"><a ng-href="#/calculator">Get Started</a></li>
+					<li ng-show="loggedIn"><a ng-href="#/store">Store</a></li>
+					<li ng-show="loggedIn"><a ng-href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 					<li ng-hide="loggedIn"><a ng-href="#/signin">Sign In</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/account">Account</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/signout">Sign Out</a></li>

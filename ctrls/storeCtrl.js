@@ -1,42 +1,53 @@
-shopApp.controller('storeCtrl', function($scope, $cookies, $http, $location) {
-	var supplyOz = $cookies.get('totalSupply');
-	console.log(supplyOz);
-	$scope.currentOz = 0;
-	function currentOz() {
-		var returnCurrentOz = function() {
-			var total = 0;
-			var currentTotal = $scope.cartArr.reduce(function(total, item) {
-				total += item.package.qty * item.oz;
-				return total;
-			}, total)
-			return currentOz();
-		}
-		$scope.currentOz = returnCurrentOz;
-	}
+shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $location) {
+	//Water Goal, if cart is not found
+	// var supplyOz = $cookies.get('totalSupply');
+	// console.log(supplyOz);
+	// $scope.currentOz = 0;
+	// function currentOz() {
+	// 	var returnCurrentOz = function() {
+	// 		var total = 0;
+	// 		var currentTotal = $scope.cartArr.reduce(function(total, item) {
+	// 			total += item.package.qty * item.oz;
+	// 			return total;
+	// 		}, total)
+	// 		return currentOz();
+	// 	}
+	// 	$scope.currentOz = returnCurrentOz;
+	// }
 
-	if (supplyOz) {
-		$scope.totalSupply = supplyOz;
-		$scope.body1 = 1;
-		$scope.body2 = 0;
-	} else {
-		$scope.body1 = 0;
-		$scope.body2 = 1;
-	}
+	//how to set water goal?
+	//if cart found from user's db (my cart)
+	//if cart found from cookies (not in db), then get Oz from cookies as well
 	
-	//cookies set for cartTotal and cartArr
-	var jsonCartArr = $cookies.getObject('cart');
-	console.log(jsonCartArr);
-	if (jsonCartArr) {
-		$scope.cartArr = jsonCartArr.cart;
+	// if (supplyOz) {
+	// 	$scope.totalSupply = supplyOz;
+	// 	$scope.body1 = 1;
+	// 	$scope.body2 = 0;
+	// } else {
+	// 	$scope.body1 = 0;
+	// 	$scope.body2 = 1;
+	// }
+
+	//Store--------------------------------------
+	
+	//cookies set for cartTotal, cartTotalItems and cartArr
+	var jsonCart = $cookies.getObject('cart');
+	console.log('jsonCart from $cookies retrieved:');
+	console.log(jsonCart);
+	if ((jsonCart) && (jsonCart !== undefined)) {
+		$scope.cartArr = jsonCart.items;
+		$scope.cartTotal = jsonCart.total;
+		$scope.cartTotalItems = jsonCart.qty;
+		$scope.currentOz = jsonCart.oz;
 		updateCart();
 	} else {
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
+		$scope.cartTotalItems = 0;
+		$scope.currentOz = 0;
+
 	}
 
-	$scope.goToCart = function() {
-		$location.path('/cart');
-	}
 	$scope.products = [];
 	$http.post(url + 'products').then(function success(rspns) {
 		var all = rspns.data.obj;
@@ -97,28 +108,6 @@ shopApp.controller('storeCtrl', function($scope, $cookies, $http, $location) {
 		updateCart();
 	};
 
-	$scope.openPencil = 0;
-	$scope.qtyEdit = function(that) {
-		that.openPencil = !that.openPencil;
-		console.log("final " + $scope.qtyUpdated);
-		if ($scope.qtyUpdated === 0) {
-			$scope.cartArr.splice(that.$index);
-		}
-		updateCart();
-		$scope.qtyUpdated = "";
-	};
-	$scope.updated = function(that) {
-		var index = that.$index;
-		$scope.cartArr[index].cart.qty = $scope.qtyUpdated;
-		$scope.cartArr[index].cart.total = $scope.cartArr[index].cart.qty * $scope.cartArr[index].price;
-		$scope.cartArr[index].cart.total =	$scope.cartArr[index].cart.total.toFixed(2);
-	}
-
-	$scope.resetCart = function() {
-		$scope.cartArr = [];
-		updateCart();
-	};
-
 	function updateCart() {
 		var total = 0;
 		$scope.cartTotal = $scope.cartArr.reduce(function(total, item) {
@@ -137,10 +126,11 @@ shopApp.controller('storeCtrl', function($scope, $cookies, $http, $location) {
 			return Math.round(total2);
 		}, total2);
 		console.log($scope.cartArr);
-		var jsonCartArr = {
-			cart: $scope.cartArr
+		var tempCart = {
+			items: $scope.cartArr,
+			qty: $scope.cartTotalItems,
+			total: $scope.cartTotal,
 		};
-		$cookies.putObject('cart',jsonCartArr);
+		$cookies.putObject('cart', tempCart);
 	}
-
 });

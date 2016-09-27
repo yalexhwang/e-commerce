@@ -1,57 +1,58 @@
 #page-store {
-	background-color: #dcf1f6;
-	min-height: 100vh;
+	padding: 0px;
+	background-image: linear-gradient(rgba(255,255,255,0.3),rgba(255,255,255,0.6)), url('../images/water-store.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-width: 400px;
 }
+// #goal {
+// 	width: 205px;
+// 	position: fixed;
+// 	padding: 15px;
+// 	z-index: 10;
+// 	opacity: 0.7;
+// 	border-radius: 8px;
+// 	border: 3px solid #3deaaf;
+// 	background-color: #9ffbdc;
+// 	margin-left: -20px;
+// 	margin-top: 12px;
+// 	font-color: black;
+// 	font-size: 13px;	
+// 	font-family: "Oxygen", sans-serif;
+// }
 
+// #goal-title {
+// 	font-size: 15px;
+// 	color: black;
 
-#goal {
-	width: 205px;
-	position: fixed;
-	padding: 15px;
-	z-index: 10;
-	opacity: 0.7;
-	border-radius: 8px;
-	border: 3px solid #3deaaf;
-	background-color: #9ffbdc;
-	margin-left: -20px;
-	margin-top: 12px;
-	font-color: black;
-	font-size: 13px;	
-	font-family: "Oxygen", sans-serif;
-}
+// }
+// #goal-body-1 {
+// 	padding-left: 20px;
+// 	padding-top: 10px;
+// 	font-size: 16px;
+// 	font-color: black;
+// }
 
-#goal-title {
-	font-size: 15px;
-	color: black;
+// #goal-body-2 {
+// 	padding-left: 13px;
+// 	padding-top: 10px;
+// 	font-color: black;
+// 	font-size: 14px;
+// }
 
-}
-#goal-body-1 {
-	padding-left: 20px;
-	padding-top: 10px;
-	font-size: 16px;
-	font-color: black;
-}
-
-#goal-body-2 {
-	padding-left: 13px;
-	padding-top: 10px;
-	font-color: black;
-	font-size: 14px;
-}
-
-#store-title {
+.store-title {
 	text-align: center;
 	font-family: "Oxygen", sans-serif;
-	margin: 30px 20px 5px 20px;
+	margin: 40px 20px 30px 20px;
 }
 
 #store-wrapper {
 	width: 90%;
-	margin: auto
+	margin: auto;
 }
 
-#button-cart-wrapper {
-	text-align: right;
+#store-buttons-wrapper {
+	text-align: justify;
 	margin-bottom: 10px;
 }
 #store {
@@ -60,6 +61,7 @@
 	background-color: white;
 	padding: 30px 25px;
 	border-radius: 8px;
+	border: 1px solid #e1fcff;
 	text-align: center;
 	margin-bottom: 50px;
 }

@@ -39,9 +39,9 @@ router.post('/getUser', function(req, res, next) {
 	});
 });
 
-router.post('/remove_token', function(req, res, next) {
+router.post('/removeToken', function(req, res, next) {
 	var token = req.body.userToken;
-	console.log("remove_token: " + token);
+	console.log("removeToken: " + token);
 	User.findOneAndUpdate({'token': token}, {$set: {'token': ""}}, function(err, docs) {
 		if (err) { 
 			console.log(err);
@@ -59,13 +59,30 @@ router.post('/remove_token', function(req, res, next) {
 	});
 });
 
-router.post('/save-my-cart', function(req, res, next) {
+router.post('/saveMyPlan', function(req,res, next) {
+	console.log(req.body);
+	var plan = req.body.plan;
+	var token = req.body.token;
+	User.findOneAndUpdate({'token': token}, {$set: {'plan': plan}}, {new: true}, function(err, docs) {
+		if (err) { console.log(err); } 
+		else {
+			console.log(docs);
+			res.json({
+				passFail: 1,
+				obj: docs
+			});
+		}
+	});
+});
+
+router.post('/saveCart', function(req, res, next) {
 	console.log(req.body);
 	var token = req.body.token;
 	var cart = req.body.cart;
-	User.findOneAndUpdate({token: token}, {$set: {cart: cart}}, function(err, docs) {
+	User.findOneAndUpdate({token: token}, {$set: {cart: cart}}, {new: true}, function(err, docs) {
 		if (err) { console.log(err); } 
 		else {
+			console.log("cart saved-----------------");
 			console.log(docs);
 			res.json({
 				passFail: 1,
@@ -79,7 +96,6 @@ router.post('/products', function(req, res, next) {
 	console.log(req.body);
 	Item.find({}, function(err, docs) {
 		if (err) {
-			console.log("err------------");
 			console.log(err);
 		} else {
 			console.log(docs);
@@ -120,11 +136,13 @@ router.post('/register', function(req, res, next) {
 	var password = req.body.password;
 	var email = req.body.email;
 	var address = req.body.address;
+	var plan = req.body.plan;
 	var newUser = new User({
 		username: username,
 		password: bcrypt.hashSync(password),
 		email: email,
 		address: address,
+		plan: plan
 	});
 	console.log(newUser);
 	newUser.save(function(err, saved, status) {

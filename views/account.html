@@ -1,15 +1,14 @@
 <div class="container-fluid" id="page-account">
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1" id="account-wrapper">
+		<div class="col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1" id="account-wrapper">
 			<div>
 				<div class="col-sm-3">
 					<div id="account-menu">
 						<ul class="nav nav-pills nav-stacked">
-							<li><a href="#/#account-wrapper" du-smooth-scroll>Home</a></li>
+							<li><a href="#/#nav" du-smooth-scroll>Home</a></li>
 							<li><a href="#/#account-plan" du-smooth-scroll>My Plan</a></li>
 							<li><a href="#/#account-cart" du-smooth-scroll>My Cart</a></li>
 							<li><a href="#/#account-history" du-smooth-scroll>Order History</a></li>
-							
 							<li><a href="#">Help</a></li>
 						</ul>
 					</div>
@@ -17,60 +16,191 @@
 				<div class="col-sm-9">
 					<div id="account-main">
 						<div id="account-home">
-							<h3>My Info <small><span class="glyphicon glyphicon-pencil" ng-click="edit()"></span></small></h3>
-								<div id="info-table-wrapper">
-									<table class="table">
-										<tr></tr>
+							<h3>My Info <small><span class="glyphicon glyphicon-pencil" ng-click="editMyInfo()"></span></small></h3>
+							<div id="info-table-wrapper">
+								<table class="table table-striped">
+										<tbody>
+											<tr>
+												<td>User Name</td>
+												<td>{{user.username}}</td>
+											</tr>
+											<tr>
+												<td>E-mail Address</td>
+												<td>{{user.email}}</td>
+											</tr>
+											<tr>
+												<td>Password</td>
+												<td>**********</td>
+											</tr>
+											<tr>
+												<td>Address</td>
+												<td>
+													{{user.address.name}}<br/>
+													{{user.address.line1}} {{user.address.line2}}<br/>
+													{{user.address.city}}, {{user.address.state}}<br/>
+													{{user.address.zip}}
+												</td>
+											</tr>
+											<tr></tr>
+										</tbody>
+								</table>
+								<div id="account-home-edit" ng-show="openInfoEdits">
+									<form ng-submit="saveEditedMyInfo()" class="form-horizontal">
+										<div class="form-group">
+											<label for="update-username" class="col-sm-3 control-label">User Name</label>
+											<div class="col-sm-7">
+												<input type="text" id="update-username" class="form-control col-sm-7" minlength="4" maxlength="20" value="{{user.username}}" placeholder="{{user.username}}" ng-model="updatedUserName">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-email" class="col-sm-3 control-label">E-mail Address</label>
+											<div class="col-sm-7">
+												<input type="email" id="update-email" class="form-control col-sm-7" value="{{user.email}}" placeholder="{{user.email}}" ng-model="updatedEmail">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-pw" class="col-sm-3 control-label">Password</label>
+											<div class="col-sm-7">
+												<input type="password" id="update-pw" class="form-control col-sm-7" minlength="8" placeholder="**********" ng-model="updatedPassword">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-pw-confirm" class="col-sm-3 control-label">Confirm Password</label>
+											<div class="col-sm-7">
+												<input type="password" id="update-pw-confirm" class="form-control col-sm-7" minlength="8" ng-model="updatedPasswordConfirm">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-name" class="col-sm-3 control-label">Name</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control col-sm-7" value="{{user.address.name}}" placeholder="{{user.address.name}}" id="update-name" ng-model="updatedName">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-add1" class="col-sm-3 control-label">Address 1</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control col-sm-7" value="{{user.address.line1}}" placeholder="{{user.address.line1}}" id="update-add1" ng-model="updatedAdd1">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-add2" class="col-sm-3 control-label" >Address 2</label>
+											<div class="col-sm-7">
+												<input type="text" class="form-control col-sm-7" value="{{user.address.line2}}" placeholder="{{user.address.line2}}"  id="update-add2" ng-model="updatedAdd2">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-city" class="col-sm-3 control-label">City</label>
+											<div class="col-sm-7">
+												<input type="text" id="update-city" class="form-control col-sm-7" value="{{user.address.city}}" placeholder="{{user.address.city}}" ng-model="updatedCity">
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="update-state-zip" class="col-sm-3 control-label">State / Zip code</label>
+											<div class="col-sm-3">
+												<select id="update-staet-zip" class="form-control col-sm-7" value="{{user.address.state}}" ng-model="updatedState">
+														<option class="optionState" value="AL">AL</option>
+														<option class="optionState" value="AK">AK</option>
+														<option class="optionState" value="AZ">AZ</option>
+														<option class="optionState" value="AR">AR</option>
+														<option class="optionState" value="CA">CA</option>
+														<option class="optionState" value="CO">CO</option>
+														<option class="optionState" value="CT">CT</option>
+														<option class="optionState" value="DE">DE</option>
+														<option class="optionState" value="DC">DC</option>
+														<option class="optionState" value="FL">FL</option>
+														<option class="optionState" value="GA">GA</option>
+														<option class="optionState" value="HI">HI</option>
+														<option class="optionState" value="ID">ID</option>
+														<option class="optionState" value="IL">IL</option>
+														<option class="optionState" value="IN">IN</option>
+														<option class="optionState" value="IA">IA</option>
+														<option class="optionState" value="KS">KS</option>
+														<option class="optionState" value="KY">KY</option>
+														<option class="optionState" value="LA">LA</option>
+														<option class="optionState" value="ME">ME</option>
+														<option class="optionState" value="MD">MD</option>
+														<option class="optionState" value="MA">MA</option>
+														<option class="optionState" value="MI">MI</option>
+														<option class="optionState" value="MN">MN</option>
+														<option class="optionState" value="MS">MS</option>
+														<option class="optionState" value="MO">MO</option>
+														<option class="optionState" value="MT">MT</option>
+														<option class="optionState" value="NE">NE</option>
+														<option class="optionState" value="NV">NV</option>
+														<option class="optionState" value="NH">NH</option>
+														<option class="optionState" value="NJ">NJ</option>
+														<option class="optionState" value="NM">NM</option>
+														<option class="optionState" value="NY">NY</option>
+														<option class="optionState" value="NC">NC</option>
+														<option class="optionState" value="ND">ND</option>
+														<option class="optionState" value="OH">OH</option>
+														<option class="optionState" value="OK">OK</option>
+														<option class="optionState" value="OR">OR</option>
+														<option class="optionState" value="PA">PA</option>
+														<option class="optionState" value="RI">RI</option>
+														<option class="optionState" value="SC">SC</option>
+														<option class="optionState" value="SD">SD</option>
+														<option class="optionState" value="TN">TN</option>
+														<option class="optionState" value="TX">TX</option>
+														<option class="optionState" value="UT">UT</option>
+														<option class="optionState" value="VT">VT</option>
+														<option class="optionState" value="VA">VA</option>
+														<option class="optionState" value="WA">WA</option>
+														<option class="optionState" value="WV">WV</option>
+														<option class="optionState" value="WI">WI</option>
+														<option class="optionState" value="WY">WY</option>
+												</select>
+											</div>
+											<div class="col-sm-4">
+												<input type="text" id="update-state-zip" pattern="^\b\d{5}(-\d{4})?\b$" class="form-control col-sm-7" placeholder="{{user.address.zip}}" value="{{user.address.zip}}" ng-model="updatedZip">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-3 col-sm-7">
+												<button type="submit" class="btn btn-default">Save</button>
+												<button type="button" class="btn btn-default" ng-click="cancelEditMyInfo">Cancel</button>
+											</div>
+										</div>
+									</form>
+									<div ng-show="openEditMyInfoMessage">{{editMyInfoMessage}}</div>
+								</div>
+							</div>
+						</div>							
+						<hr>
+						<div id="account-plan" class="account-section">
+							<h3>My Plan <small><span class="glyphicon glyphicon-pencil" ng-click="editMyPlan()"></span></small></h3>
+							<div id="plan-table-wrapper">
+								<table class="table table-striped"> 
+									<tbody>
 										<tr>
-											<td>User Name</td>
-											<td>{{user.username}}</td>
+											<td>Total Supply (fl. oz.)</td>
+											<td>{{user.plan.supplyOz}}
+											<span class="updatedPlanInfo" ng-show="openUpdatedPlanInfo"> <span class="glyphicon glyphicon-triangle-right"></span> {{planUpdate.supplyOz}}</span></td>
 										</tr>
 										<tr>
-											<td>E-mail Address</td>
-											<td>{{user.email}}</td>
+											<td>Delivery Frequency</td>
+											<td>{{user.plan.delivery.option1}}  
+												<span class="updatedPlanInfo" ng-show="openUpdatedPlanInfo"> <span class="glyphicon glyphicon-triangle-right"></span> {{planUpdate.delivery.option1}}</span>
+											</td>
 										</tr>
 										<tr>
-											<td>Password</td>
-											<td>**********</td>
-										</tr>
-										<tr>
-											<td>Address</td>
-											<td>
-												{{user.address.name}}<br/>
-												{{user.address.line1}} {{user.address.line2}}<br/>
-												{{user.address.city}}, {{user.address.state}}<br/>
-												{{user.address.zip}}
+											<td>Scheduled Delivery</td>
+											<td>{{user.plan.delivery.detail}}
+												<span class="updatedPlanInfo" ng-show="openUpdatedPlanInfo"> <span class="glyphicon glyphicon-triangle-right"></span> {{planUpdate.delivery.detail}}</span>
 											</td>
 										</tr>
 										<tr></tr>
-									</table>
-								</div>
-						</div>
-						<div id="account-plan" class="account-section">
-							<h3>My Plan <small><span class="glyphicon glyphicon-pencil" ng-click="edit()"></span></small></h3>
-							<div id="plan-table-wrapper">
-								<table class="table"> 
-									<tr>
-										<td>Total Supply (oz.)</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>Delivery Type</td>
-										<td></td>
-									</tr>
-									<tr>
-										<td>//direct to order history!//</td>
-										<td></td>
-									</tr>
-
+									</tbody>
 								</table>
+								<div class="updatedPlanMessage" ng-show="openUpdatedPlanInfo">Please review and confirm your change.   <button class="btn btn-xs btn-default" type="button" ng-click="saveUpdatedPlan()">Confirm</button> <button class="btn btn-xs btn-default" type="button" ng-click="discardUpdatedPlanInfo()">Cancel</button></div>
 							</div>
 						</div>
+						<hr>
 						<div id="account-cart" class="account-section">
-							<h3>My Cart <small><span class="glyphicon glyphicon-pencil" ng-click="edit()"></span></small></h3>
+							<h3>My Cart <small><span class="glyphicon glyphicon-pencil" ng-click="editMyPlan()"></span></small></h3>
 							<div id="cart-table-wrapper">
 								<div class="alert alert-info" ng-show="noCart">Go to <a href="#/cart">Cart</a> and click 'Save Cart' to see the current cart here.</div>
-								<table class="table" ng-hide="noCart" ng-repeat="item in myCart">
+								<table class="table table-striped" ng-hide="noCart" ng-repeat="item in myCart">
 									<thead>
 										<tr>
 											<th>#</th>
@@ -109,10 +239,10 @@
 								</table>
 							</div>
 						</div>
+						<hr>
 						<div id="account-history" class="account-section">
 							<h3>Order History</h3>
 						</div>
-
 					</div>
 				</div>
 			</div>

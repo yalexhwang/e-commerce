@@ -1,42 +1,82 @@
 /* line 1, ../../sass/views/account.scss */
 #page-account {
-  background-color: #dcf1f6;
   min-height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-dewy.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* line 6, ../../sass/views/account.scss */
+/* line 8, ../../sass/views/account.scss */
 #account-menu {
   font-family: 'Libre Franklin', sans-serif;
   font-size: 13px;
   padding-left: 0px;
+  margin-bottom: 40px;
 }
 
-/* line 11, ../../sass/views/account.scss */
+/* line 14, ../../sass/views/account.scss */
 #account-wrapper {
-  font-family: 'Robato', sans-serif;
+  font-family: 'Oxygen', sans-serif;
   margin-top: 40px;
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid #e1fcff;
   background-color: white;
   min-height: 90%;
 }
-
-/* line 20, ../../sass/views/account.scss */
-.account-section {
-  margin-top: 40px;
+/* line 22, ../../sass/views/account.scss */
+#account-wrapper h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
-/* line 24, ../../sass/views/account.scss */
+/* line 28, ../../sass/views/account.scss */
+.account-section {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+/* line 32, ../../sass/views/account.scss */
+#account-home {
+  margin-bottom: 10px;
+}
+/* line 33, ../../sass/views/account.scss */
 #account-home h3 {
   margin-top: 5px;
 }
 
-/* line 29, ../../sass/views/account.scss */
+/* line 39, ../../sass/views/account.scss */
+#account-home-edit {
+  padding: 20px 10px 10px 5px;
+  border-radius: 8px;
+  background-color: #f4f4ff;
+}
+/* line 43, ../../sass/views/account.scss */
+#account-home-edit label {
+  font-size: 12px;
+}
+
+/* line 48, ../../sass/views/account.scss */
 #info-table-wrapper {
   width: 90%;
 }
 
-/* line 33, ../../sass/views/account.scss */
+/* line 51, ../../sass/views/account.scss */
+#plan-table-wrapper {
+  width: 90%;
+}
+
+/* line 54, ../../sass/views/account.scss */
 #cart-table-wrapper {
   width: 90%;
+}
+
+/* line 58, ../../sass/views/account.scss */
+.updatedPlanInfo {
+  color: #b90000;
+}
+
+/* line 61, ../../sass/views/account.scss */
+.updatedPlanMessage {
+  font-size: 13px;
 }

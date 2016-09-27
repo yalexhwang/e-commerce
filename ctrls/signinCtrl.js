@@ -1,5 +1,5 @@
 shopApp.controller('signinCtrl', function($scope, $rootScope, $http, $location, $cookies, $anchorScroll) {
-	if ($rootScope.loggedIn) {
+	if ($rootScope.loggedIn === 1) {
 		$location.path('/account');
 	}
 
@@ -15,7 +15,8 @@ shopApp.controller('signinCtrl', function($scope, $rootScope, $http, $location, 
 			if (rspns.data.passFail === 1) {
 				var userToken = rspns.data.obj.token;
 				console.log(userToken);
-				$cookies.putObject('userToken', userToken);
+				$cookies.put('userToken', userToken);
+				$rootScope.loggedIn = 1;
 				$location.path('/account'); 
 			} else {
 				console.log(rspns.data.status);

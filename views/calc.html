@@ -1,0 +1,115 @@
+<div class="container-fluid" id="page-calculator">
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 col-sm-12">
+			<div id="intake-calculator">
+				<h5>What's your daily water intake?</h5>
+				<div class="col-sm-4">
+					<div class="step-wrapper">
+						<h4>1. Calculate desired daily water intake</h4>
+						<form ng-submit="calculateIntake()">
+							<div class="form-group form-group-sm">
+								<label for="weight" class="control-label">Weight</label>
+								<div class="input-group input-group-sm">
+										<input type="text" pattern="[1-9][0-9]{1,2}" id="weight" class="form-control" ng-model="weight" ng-click=openStep1Msg = 0">
+									<div class="input-group-addon">lbs.</div>
+								</div>
+							</div>
+							<div class="form-group form-group-sm">
+								<label for="lvl" class="control-label">Hydration Level</label>
+								<select id="lvl" class="form-control" ng-model="hydrationLvl" ng-click="openStep1Msg = 0">
+									<option value="0.5">Minimum</option>
+									<option value="0.8">Moderate</option>
+									<option value="1.1">Maximum</option>
+								</select>
+							</div>
+							<div class="form-group form-group-sm">
+								<button type="submit" class="btn btn-default btn-sm">Enter</button>
+							</div>
+						</form>
+						<div ng-show="openStep1Msg" class="message">{{step1Msg}}</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="step-wrapper">
+						<h4>2. Choose delivery frequency</h4>
+						<p ng-show="step2ready"><small>You can change and cancel at any time.</small></p>
+						<div id="delivery" ng-show="step2ready">
+							<form ng-submit="getDeliveryOption()">
+								<div class="form-group form-group-sm">
+									<div class="input-group">
+										<div class="radio">
+												<label><input type="radio" name="deliveryOptions" value="Weekly" ng-click="openDay = 1; openCustom = 0;openDate =0; openStep2Msg = 0;"  ng-model="frequency"> Weekly</label>
+										</div>
+										<div class="radio">
+												<label><input type="radio" name="deliveryOptions" value="Bi-weekly" ng-click="openDay = 1; openCustom =0;  openDate = 0; openStep2Msg = 0;" ng-model="frequency"> Bi-weekly</label>
+										</div>
+										<div class="radio">
+												<label><input type="radio" name="deliveryOptions" value="Custom" ng-click="openCustom = 1; openDate =1; openDay = 0; openStep2Msg = 0;" ng-model="frequency"> Custom</label>
+										</div>
+									</div>
+									<div ng-show="openDay">
+										<label for="day">On which day?</label>
+										<select class="form-control" id="day"  ng-model="dayForWeekly" ng-click=" openStep2Msg = 0">
+											<option value="1" ng-click="openDate = 1">Mon</option>
+											<option value="2" ng-click="openDate = 1">Tue</option>
+											<option value="3" ng-click="openDate = 1">Wed</option>
+											<option value="4" ng-click="openDate = 1">Thu</option>
+											<option value="5" ng-click="openDate = 1">Fri</option>
+											<option value="6" ng-click="openDate = 1">Sat</option>
+										</select>
+									</div>
+									<div ng-show="openCustom">
+										<label for="day">Days between deliveries (3 - 30)</label>
+											<input type="number" min="3" max="30" class="form-control" ng-model="daysForCustom" ng-click="openStep2Msg = 0">
+									</div>
+									<div ng-show="openDate">
+										<label for="date">Starting from</label>
+										<input type="date" id="date" class="form-control" ng-model="startingDate" ng-click=" openStep2Msg = 0">
+									</div>			
+								</div>
+								<div class="form-group form-group-sm">
+									<button type="submit" class="btn btn-default btn-sm" ng-click="openStep2Msg = 0">Enter</button>
+								</div>
+							</form>
+							<div ng-show="openStep2Msg" class="message">Please complete the form.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="step-wrapper">
+						<h4>3. Choose your water</h4>
+						<h5 ng-show="step3ready">Your Plan Detail<small><br/>  You can edit it in Account page.</small></h5>
+						<table class="table" ng-show="step3ready">
+							<tr>
+								<td class="table-item"><span class="glyphicon glyphicon-ok-sign"></span>  Daily Water Intake</td>
+								<td>{{dailyIntake}} oz.</td>
+							</tr>
+							<tr>
+								<td class="table-item"><span class="glyphicon glyphicon-calendar"></span>  Delivery Frequency</td>
+								<td>{{frequency}}</td>
+							</tr>
+							<tr>
+								<td class="table-item"><span class="glyphicon glyphicon-shopping-cart"></span>  Total Water Supply</td>
+								<td>{{totalIntake}} oz.</td>
+							</tr>
+							<tr>
+								<td></td><td></td>
+							</tr>
+						</table>
+						<div>
+							<button type="button" class="btn btn-default" ng-show="step3ready && loggedIn" ng-click="savePlan()">Save</button>
+							<button type="button" class="btn btn-default" ng-show="step3ready && !(loggedIn)" ng-click="saveNewPlan()">New Member</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<div class="arrow">
+						<a href="#nav" class="arrow" du-smooth-scroll><span class="glyphicon glyphicon-circle-arrow-up top"></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

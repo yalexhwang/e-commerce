@@ -17,7 +17,7 @@
 			<div class="form-group">
 				<label for="register-pw" class="col-sm-3 control-form">Password</label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" minlength="8" maxlength="20" id="register-pw" ng-model="password">
+					<input type="password" class="form-control" minlength="8" maxlength="20" id="register-pw" ng-model="password">
 				</div>
 				<div class="col-sm-3" ng-show="verify">
 				</div>
@@ -27,7 +27,8 @@
 				<div class="col-sm-5">
 					<input type="password" class="form-control" id="register-pw-confirm" minlength="8" ng-model="password1">
 				</div>
-				<div class="col-sm-3" ng-show="verify">
+				<div class="col-sm-3" ng-show="verifyPW" class="message">
+					Password does not match. Please try again.
 				</div>
 			</div>
 			<div class="form-group">
@@ -50,30 +51,21 @@
 				<div class="form-group">
 					<label class="col-sm-3 control-form">Delivery Frequency</label>
 					<div class="col-sm-5">
-						{{userPlan.frequency}}
+						{{userPlan.delivery.option1}}
 					</div>
 				</div>
-				<div class="form-group" ng-show="openWeekOption">
+				<div class="form-group" ng-show="option2Week">
 					<label class="col-sm-3 control-form">On which day</label>
 					<div class="col-sm-5">
-						{{userPlan.option1}}
+						{{userPlan.delivery.detail}}
 					</div>
 				</div>
-				<div class="form-group" ng-show="openCustomOption">
-					<label class="col-sm-3 control-form">Days between deliveries</label>
-					<div class="col-sm-5">
-						{{userPlan.option2}}
-					</div>
-				</div>
-				<div class="form-group" ng-show="planData">
+				<div class="form-group" ng-show="option2Custom">
 					<label class="col-sm-3 control-form">Starting Date</label>
 					<div class="col-sm-5">
 						{{userPlan.startDate}}
 					</div>
 				</div>
-				<button class="btn btn-default btn-xs" id="plan-edit" ng-click="editPlan()">
-					<span ng-hide="planData" class="glyphicon glyphicon-hand-left"></span><span class="glyphicon glyphicon-pencil" ng-show="planData"></span>
-				</button>
 			</div>
 
 			<!-- if cookies n/a, gather input  -->
@@ -136,6 +128,14 @@
 			</div>
 			<hr>
 			<div class="form-group">
+				<label class="col-sm-3 control-form" id="register-name">Name</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="register-name" ng-model="name">
+				</div>
+				<div class="col-sm-3" ng-show="verify">
+				</div>
+			</div>
+			<div class="form-group">
 				<label class="col-sm-3 control-form" id="register-address-1">Address 1</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control" id="register-address-1" ng-model="add1">
@@ -162,10 +162,62 @@
 			<div class="form-group">
 				<label class="col-sm-3 control-form" id="register-address-st-zip">State / Zip Code</label>
 				<div class="col-sm-2">
-					<input type="text" class="form-control" id="register-address-st-zip" ng-model="state">
+					<select class="form-control" id="register-address-st-zip" ng-model="state">
+						<option value="AL">AL</option>
+						<option value="AK">AK</option>
+						<option value="AZ">AZ</option>
+						<option value="AR">AR</option>
+						<option value="CA">CA</option>
+						<option value="CO">CO</option>
+						<option value="CT">CT</option>
+						<option value="DE">DE</option>
+						<option value="DC">DC</option>
+						<option value="FL">FL</option>
+						<option value="GA">GA</option>
+						<option value="HI">HI</option>
+						<option value="ID">ID</option>
+						<option value="IL">IL</option>
+						<option value="IN">IN</option>
+						<option value="IA">IA</option>
+						<option value="KS">KS</option>
+						<option value="KY">KY</option>
+						<option value="LA">LA</option>
+						<option value="ME">ME</option>
+						<option value="MD">MD</option>
+						<option value="MA">MA</option>
+						<option value="MI">MI</option>
+						<option value="MN">MN</option>
+						<option value="MS">MS</option>
+						<option value="MO">MO</option>
+						<option value="MT">MT</option>
+						<option value="NE">NE</option>
+						<option value="NV">NV</option>
+						<option value="NH">NH</option>
+						<option value="NJ">NJ</option>
+						<option value="NM">NM</option>
+						<option value="NY">NY</option>
+						<option value="NC">NC</option>
+						<option value="ND">ND</option>
+						<option value="OH">OH</option>
+						<option value="OK">OK</option>
+						<option value="OR">OR</option>
+						<option value="PA">PA</option>
+						<option value="RI">RI</option>
+						<option value="SC">SC</option>
+						<option value="SD">SD</option>
+						<option value="TN">TN</option>
+						<option value="TX">TX</option>
+						<option value="UT">UT</option>
+						<option value="VT">VT</option>
+						<option value="VA">VA</option>
+						<option value="WA">WA</option>
+						<option value="WV">WV</option>
+						<option value="WI">WI</option>
+						<option value="WY">WY</option>
+					</select>
 				</div>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="register-address-3" pattern="/^\b\d{5}(-\d{4})?\b$/" ng-model="zip">
+					<input type="text" class="form-control" id="register-address-3" pattern="^\b\d{5}(-\d{4})?\b$" ng-model="zip">
 				</div>
 				<div class="col-sm-3" ng-show="verify">
 				</div>
@@ -211,8 +263,7 @@
 				<div ng-hide="hideDBID">{{databseID}}</div>
 			</div>
 			<div class="buttons">
-				<button class="btn btn-primary">Go to Store</button>
-				<button class="btn btn-default"><a href="#/signin">Sign In</a></button>
+				<button class="btn btn-primary"><a href="#/signin">Sign In</a></button>
 			</div>
 		</div>
 	</div>

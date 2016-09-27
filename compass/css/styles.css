@@ -3,7 +3,7 @@
   background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/main-jbtr.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  min-height: 550px;
+  height: 100vh;
   margin: 0px;
   padding: 0px;
 }
@@ -44,116 +44,39 @@
   margin-top: 300px;
   text-shadow: white 0px 0px 6px;
 }
-/* line 43, ../sass/views/main.scss */
-#main-jumbotron .title-menu {
-  font-weight: 200;
-  font-color: black;
-  font-size: 18px;
-  font-shadow: white 0px 0px 10px;
-  margin-top: 10px;
-}
-/* line 52, ../sass/views/main.scss */
-#main-jumbotron a {
-  color: black;
-}
-/* line 56, ../sass/views/main.scss */
-#main-jumbotron a:hover {
-  font-weight: 300px;
-}
-/* line 59, ../sass/views/main.scss */
-#main-jumbotron .menuOn {
-  font-weight: 200px;
-}
 
-/* line 64, ../sass/views/main.scss */
+/* line 44, ../sass/views/main.scss */
 #how-wrapper {
-  background-image: linear-gradient(white, rgba(255, 255, 255, 0.4)), url("../images/water-bottles.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/blue.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
-  min-height: 700px;
-}
-
-/* line 71, ../sass/views/main.scss */
-#get-wrapper {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/water-bottles.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100%;
-  min-height: 700px;
-}
-
-/* line 78, ../sass/views/main.scss */
-#how-wrapper, #get-wrapper {
-  padding: 0px;
+  padding-top: 400px;
   text-align: center;
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 84, ../sass/views/main.scss */
+/* line 52, ../sass/views/main.scss */
 #how-title {
-  margin-top: 250px;
-  padding-top: 25px;
-  padding-bottom: 10px;
-  font-size: 20px;
-  font-weight: 200;
+  font-family: 'Oxygen', sans-serif;
 }
 
-/* line 91, ../sass/views/main.scss */
-#get-title {
-  margin-top: 150px;
-  font-size: 20px;
-  font-weight: 200;
-}
-
-/* line 97, ../sass/views/main.scss */
-#how-title, #get-title {
-  -webkit-animation: bling 6s infinite;
-  -moz-transition: bling 6s infinite;
-  -o-transition: bling 6s infinite;
-  -ms-transition: bling 6s infinite;
-}
-
-/* line 104, ../sass/views/main.scss */
+/* line 57, ../sass/views/main.scss */
 .how-step {
   height: 200px;
-}
-
-/* line 107, ../sass/views/main.scss */
-.get-step {
-  height: 370px;
-}
-
-/* line 110, ../sass/views/main.scss */
-.how-step, .get-step {
   text-align: left;
   margin: 20px;
   padding: 15px 20px;
   border-radius: 8px;
   border: white 1px solid;
   font-color: #181717;
-  -webkit-animation: appear 2s;
-  -moz-transition: appear 2s;
-  -o-transition: appear 2s;
-  -ms-transition: appear 2s;
-  transition: appear 2s;
-  webkit-animation-timing-function: ease-in;
-}
-/* line 123, ../sass/views/main.scss */
-.how-step p, .get-step p {
-  font-color: #4c4c4c;
-  font-size: 14px;
-  margin-top: 20px;
 }
 
-/* line 130, ../sass/views/main.scss */
-#calculator {
-  margin-top: 20px;
-}
-
-/* line 134, ../sass/views/main.scss */
-#result {
-  font-size: 16px;
+/* line 67, ../sass/views/main.scss */
+.arrow {
+  font-size: 25px;
+  margin: 30px;
+  text-align: center;
+  bottom: 100px;
 }
 
 @keyframes fadein {
@@ -196,188 +119,47 @@
     opacity: 1;
   }
 }
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-moz-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-ms-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-o-keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-moz-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-ms-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@-o-keyframes bling {
-  0% {
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.5;
-    color: grey;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-/* line 222, ../sass/views/main.scss */
-.top {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
 /* line 1, ../sass/views/store.scss */
 #page-store {
-  background-color: #dcf1f6;
-  min-height: 100vh;
+  padding: 0px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-store.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 400px;
 }
 
-/* line 7, ../sass/views/store.scss */
-#goal {
-  width: 205px;
-  position: fixed;
-  padding: 15px;
-  z-index: 10;
-  opacity: 0.7;
-  border-radius: 8px;
-  border: 3px solid #3deaaf;
-  background-color: #9ffbdc;
-  margin-left: -20px;
-  margin-top: 12px;
-  font-color: black;
-  font-size: 13px;
-  font-family: "Oxygen", sans-serif;
-}
-
-/* line 23, ../sass/views/store.scss */
-#goal-title {
-  font-size: 15px;
-  color: black;
-}
-
-/* line 28, ../sass/views/store.scss */
-#goal-body-1 {
-  padding-left: 20px;
-  padding-top: 10px;
-  font-size: 16px;
-  font-color: black;
-}
-
-/* line 35, ../sass/views/store.scss */
-#goal-body-2 {
-  padding-left: 13px;
-  padding-top: 10px;
-  font-color: black;
-  font-size: 14px;
-}
-
-/* line 42, ../sass/views/store.scss */
-#store-title {
+/* line 43, ../sass/views/store.scss */
+.store-title {
   text-align: center;
   font-family: "Oxygen", sans-serif;
-  margin: 30px 20px 5px 20px;
+  margin: 40px 20px 30px 20px;
 }
 
-/* line 48, ../sass/views/store.scss */
+/* line 49, ../sass/views/store.scss */
 #store-wrapper {
   width: 90%;
   margin: auto;
 }
 
-/* line 53, ../sass/views/store.scss */
-#button-cart-wrapper {
-  text-align: right;
+/* line 54, ../sass/views/store.scss */
+#store-buttons-wrapper {
+  text-align: justify;
   margin-bottom: 10px;
 }
 
-/* line 57, ../sass/views/store.scss */
+/* line 58, ../sass/views/store.scss */
 #store {
   font-family: 'Roboto', sans-serif;
   display: inline-block;
   background-color: white;
   padding: 30px 25px;
   border-radius: 8px;
+  border: 1px solid #e1fcff;
   text-align: center;
   margin-bottom: 50px;
 }
 
-/* line 67, ../sass/views/store.scss */
+/* line 69, ../sass/views/store.scss */
 .item {
   display: inline-block;
   height: 300px;
@@ -388,30 +170,30 @@
   text-align: center;
 }
 
-/* line 77, ../sass/views/store.scss */
+/* line 79, ../sass/views/store.scss */
 .item-img {
   height: 60%;
   margin: auto;
 }
 
-/* line 82, ../sass/views/store.scss */
+/* line 84, ../sass/views/store.scss */
 .item-title {
   margin: 20px 10px 10px 10px;
   font-size: 15px;
   line-height: 18px;
 }
 
-/* line 88, ../sass/views/store.scss */
+/* line 90, ../sass/views/store.scss */
 .item-price {
   font-size: 16px;
 }
 
-/* line 92, ../sass/views/store.scss */
+/* line 94, ../sass/views/store.scss */
 .item-buy {
   margin: 10px;
 }
 
-/* line 96, ../sass/views/store.scss */
+/* line 98, ../sass/views/store.scss */
 #display {
   width: 40px;
   display: inline-block;
@@ -427,13 +209,13 @@
   min-height: 100vh;
 }
 
-/* line 7, ../sass/views/cart.scss */
+/* line 6, ../sass/views/cart.scss */
 #cart-wrapper {
   margin: 20px 15px 35px 15px;
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 12, ../sass/views/cart.scss */
+/* line 11, ../sass/views/cart.scss */
 #cart {
   background-color: white;
   border-radius: 8px;
@@ -441,40 +223,40 @@
   min-width: 390px;
 }
 
-/* line 19, ../sass/views/cart.scss */
+/* line 18, ../sass/views/cart.scss */
 #button-wrapper {
   text-align: center;
 }
-/* line 21, ../sass/views/cart.scss */
+/* line 20, ../sass/views/cart.scss */
 #button-wrapper .cart-button {
   margin: 5px 10px 20px 10px;
 }
 
-/* line 25, ../sass/views/cart.scss */
+/* line 24, ../sass/views/cart.scss */
 .pq {
   text-align: center;
   width: 10%;
 }
 
-/* line 29, ../sass/views/cart.scss */
+/* line 28, ../sass/views/cart.scss */
 .ttl {
   width: 12%;
   text-align: center;
 }
 
-/* line 33, ../sass/views/cart.scss */
+/* line 32, ../sass/views/cart.scss */
 .cart-img-cell {
   text-align: center;
 }
 
-/* line 36, ../sass/views/cart.scss */
+/* line 35, ../sass/views/cart.scss */
 .cart-img {
   max-width: 90%;
   max-height: 100px;
   margin: 5px;
 }
 
-/* line 41, ../sass/views/cart.scss */
+/* line 40, ../sass/views/cart.scss */
 .cart-qty-edit {
   width: 65%;
 }
@@ -531,45 +313,85 @@
 
 /* line 1, ../sass/views/account.scss */
 #page-account {
-  background-color: #dcf1f6;
   min-height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-dewy.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-/* line 6, ../sass/views/account.scss */
+/* line 8, ../sass/views/account.scss */
 #account-menu {
   font-family: 'Libre Franklin', sans-serif;
   font-size: 13px;
   padding-left: 0px;
+  margin-bottom: 40px;
 }
 
-/* line 11, ../sass/views/account.scss */
+/* line 14, ../sass/views/account.scss */
 #account-wrapper {
-  font-family: 'Robato', sans-serif;
+  font-family: 'Oxygen', sans-serif;
   margin-top: 40px;
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid #e1fcff;
   background-color: white;
   min-height: 90%;
 }
-
-/* line 20, ../sass/views/account.scss */
-.account-section {
-  margin-top: 40px;
+/* line 22, ../sass/views/account.scss */
+#account-wrapper h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
-/* line 24, ../sass/views/account.scss */
+/* line 28, ../sass/views/account.scss */
+.account-section {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+/* line 32, ../sass/views/account.scss */
+#account-home {
+  margin-bottom: 10px;
+}
+/* line 33, ../sass/views/account.scss */
 #account-home h3 {
   margin-top: 5px;
 }
 
-/* line 29, ../sass/views/account.scss */
+/* line 39, ../sass/views/account.scss */
+#account-home-edit {
+  padding: 20px 10px 10px 5px;
+  border-radius: 8px;
+  background-color: #f4f4ff;
+}
+/* line 43, ../sass/views/account.scss */
+#account-home-edit label {
+  font-size: 12px;
+}
+
+/* line 48, ../sass/views/account.scss */
 #info-table-wrapper {
   width: 90%;
 }
 
-/* line 33, ../sass/views/account.scss */
+/* line 51, ../sass/views/account.scss */
+#plan-table-wrapper {
+  width: 90%;
+}
+
+/* line 54, ../sass/views/account.scss */
 #cart-table-wrapper {
   width: 90%;
+}
+
+/* line 58, ../sass/views/account.scss */
+.updatedPlanInfo {
+  color: #b90000;
+}
+
+/* line 61, ../sass/views/account.scss */
+.updatedPlanMessage {
+  font-size: 13px;
 }
 
 /* line 1, ../sass/views/signout.scss */
@@ -587,6 +409,96 @@
   margin-top: 40px;
 }
 
+/* line 1, ../sass/views/calc.scss */
+#page-calculator {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/blue.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150vh;
+  -webkit-animation: fadein 4s;
+  -moz-transition: fadein 4s;
+  -o-transition: fadein 4s;
+  -ms-transition: fadein 4s;
+  transition: fadein 4s;
+  padding-top: 50px;
+}
+
+/* line 14, ../sass/views/calc.scss */
+#intake-calculator {
+  margin-top: 30px;
+  border-radius: 8px;
+  font-family: 'Oxygen', sans-serif;
+}
+/* line 18, ../sass/views/calc.scss */
+#intake-calculator h5 {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+
+/* line 24, ../sass/views/calc.scss */
+.message {
+  color: #b90000;
+}
+
+/* line 28, ../sass/views/calc.scss */
+.step-wrapper {
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  border: #bbfaff 1px solid;
+  font-color: #181717;
+}
+/* line 37, ../sass/views/calc.scss */
+.step-wrapper h4 {
+  margin-bottom: 15px;
+}
+
+/* line 42, ../sass/views/calc.scss */
+.table-item {
+  font-size: 13px;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* line 9, ../sass/styles.scss */
 body {
   max-height: 100vh;
@@ -601,4 +513,9 @@ body {
 /* line 17, ../sass/styles.scss */
 #nav #brand {
   font-family: 'Oxygen', sans-serif;
+}
+
+/* line 22, ../sass/styles.scss */
+#view {
+  min-width: 400px;
 }

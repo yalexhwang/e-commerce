@@ -17,10 +17,20 @@ var userSchema = new Schema({
 		supplyOz: {type: Number},
 		delivery: {
 			option1: {type: String},
-			option2: {type: String}
+			option2: {
+				w_based: {type: String},
+				c_based: {
+					interval: {type: Number},
+					start: {type: Date}
+				}
+			}
 		}
 	},
-	cart: {type: Array},
+	cart: {
+		items: {type: Array},
+		total: {type: Number},
+		qty: {type: Number}
+	},
 	history: { type: Array },
 	token: { type: String },
 }, {timestamps: true});

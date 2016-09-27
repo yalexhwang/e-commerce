@@ -6,7 +6,7 @@ shopApp.controller('signoutCtrl', function($scope, $rootScope, $http, $cookies, 
 		if ($scope.counter == 0) {
 			var userToken = $cookies.getObject('userToken');
 			console.log(userToken);
-			$http.post(url + 'remove_token', {
+			$http.post(url + 'removeToken', {
 				userToken: userToken
 			}).then(function success(rspns) {
 				console.log(rspns);
