@@ -14,6 +14,7 @@ var configT = require('../config/config');
 //configT.secretTestKey;
 var stripe = require('stripe')(configT.secretTestKey);
 
+
 router.post('/getUser', function(req, res, next) {
 	var token = req.body.userToken;
 	User.findOne({'token': token}, function(err, docs) {
@@ -42,7 +43,7 @@ router.post('/getUser', function(req, res, next) {
 router.post('/removeToken', function(req, res, next) {
 	var token = req.body.userToken;
 	console.log("removeToken: " + token);
-	User.findOneAndUpdate({'token': token}, {$set: {'token': ""}}, function(err, docs) {
+	User.findOneAndUpdate({'token': token}, {$set: {'token': ""}}, {new: true}, function(err, docs) {
 		if (err) { 
 			console.log(err);
 			res.json({
@@ -79,7 +80,7 @@ router.post('/saveCart', function(req, res, next) {
 	console.log(req.body);
 	var token = req.body.token;
 	var cart = req.body.cart;
-	User.findOneAndUpdate({token: token}, {$set: {cart: cart}}, {new: true}, function(err, docs) {
+	User.findOneAndUpdate({'token': token}, {$set: {'cart': cart}}, {new: true}, function(err, docs) {
 		if (err) { console.log(err); } 
 		else {
 			console.log("cart saved-----------------");
@@ -129,6 +130,72 @@ router.post('/stripe', function(req, res, next) {
 		});
 	});
 });
+
+router.post('/validatePW', function(req, res, next) {
+	console.log(req.body);
+	var username = req.body.username;
+	var password = req.body.password;
+	var item = req.body.item;
+	var newValue = req.body.newValue;
+	var obj;
+	switch(item) {
+		case 'username':
+			obj = {$set: {'username': newVal}};
+			break;
+		case 'email':
+			obj = {$set: {'email': newVal}};
+			break;
+		case 'password':
+			obj = 'password';
+			break;
+		case 'address':
+			obj = {$set: {'address': newVal}}
+			break;
+	}
+	User.findOne({'username': username}, {new: true}, function(err, docs) {
+		if (err) {
+			console.log(err);
+			res.json({
+				passFail: 0,
+				status: "Connection failed"
+			});
+		} else {
+			var result = bcrypt.compareSync(password, docs.password);
+			if (result) {
+				if (obj === 'password') {
+					var newPW = bcrypt.hashSync(newValue);
+					User.findOneAndUpdate({'username': username}, {$set: {'password': newPW}}, function(err, docs) {
+						if (err) {console.log(err);}
+						else {
+							console.log(docs);
+							res.json({
+								passFail: 1,
+								obj: docs
+							});
+						}
+					});
+				} else {
+					User.findOneAndUpdate({'username': username}, obj, function(err, docs) {
+						if (err) {console.log(err);}
+						else {
+							console.log(docs);
+							res.json({
+								passFail: 1,
+								obj: docs
+							});
+						}
+					});
+				}
+			} else {
+				res.json({
+					passFail: 0,
+					status: 'User name and password did not match.'
+				});
+			}
+		}
+	});
+});
+
 
 router.post('/register', function(req, res, next) {
 	console.log(req.body);
