@@ -30,7 +30,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 
 	console.log($cookies.getObject('cart'));
 	if (($cookies.getObject('cart')) && ($cookies.getObject('cart') !== ""))  {
-		if ($cookies.getObject('cart').cart.items.length > 0) {
+		if ($cookies.getObject('cart').items.length > 0) {
 			$scope.cartAvailable = 1;
 			console.log($cookies.getObject('cart'));
 		}
