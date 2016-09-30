@@ -19,6 +19,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		$scope.cartArr = $rootScope.userData.cart.items;
 		$scope.cartTotal = $rootScope.userData.cart.total;
 		$scope.cartTotalItems = $rootScope.userData.cart.qty;
+		$scope.currentOz = $rootScope.userData.cart.oz;
 		if ($scope.cartArr.length > 0) {
 			$scope.noCart = 0;
 		} else {
@@ -28,11 +29,13 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		$location.path('/signin');
 	}
 
+	console.log("cookies cart found ~~~~~~~~~~");
 	console.log($cookies.getObject('cart'));
-	if (($cookies.getObject('cart')) && ($cookies.getObject('cart') !== ""))  {
+	if ($cookies.getObject('cart')) {
 		if ($cookies.getObject('cart').items.length > 0) {
 			$scope.cartAvailable = 1;
-			console.log($cookies.getObject('cart'));
+		} else {
+			$scope.cartAvailable = 0;
 		}
 	} else {
 		$scope.cartAvailable = 0;
@@ -330,11 +333,14 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		$route.reload();
 	};
 
+// My Cart -----------------------------------
 	$scope.openPencil = 0;
 	$scope.qtyEdit = function(that) {
+		console.log(that);
+		console.log($scope.qtyUpdated);
 		if (that.openPencil == 1) {
 			if ($scope.qtyUpdated === 0) {
-				$scope.cartArr.splice(that.$index);
+				$scope.cartArr.splice(that.$index, 1);
 				$scope.qtyUpdated = "";
 			}
 			that.openPencil = 0;
@@ -342,13 +348,21 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		} else {
 			that.openPencil = 1;
 		}	
-		
 	};
+	// $scope.qtyEdit = function(that) {
+	// 	that.openPencil = !that.openPencil;
+	// 	if ($scope.qtyUpdated === 0) {
+	// 		$scope.cartArr.splice(that.$index);
+	// 	}
+	// 	updateCart();
+	// 	$scope.qtyUpdated = "";
+	// };
 	$scope.updated = function(that) {
 		var index = that.$index;
 		$scope.cartArr[index].cart.qty = $scope.qtyUpdated;
 		var itemTotalUpdated = $scope.cartArr[index].cart.qty * $scope.cartArr[index].price;
 		$scope.cartArr[index].cart.total = itemTotalUpdated.toFixed(2);
+		console.log($scope.cartArr);
 		updateCart();
 	};
 

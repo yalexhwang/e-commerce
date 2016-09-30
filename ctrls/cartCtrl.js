@@ -3,15 +3,23 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 	$scope.notSaved = 0;
 
 	var jsonCart;
-	if ($cookies.getObject('cart') && ($cookies.getObject('cart') !== undefined)) {
-		jsonCart = $cookies.getObject('cart');
-		console.log("cart found from $coookies");
-		console.log(jsonCart);
-		$scope.cartArr = jsonCart.items;
-		$scope.cartTotal = jsonCart.total;
-		$scope.cartTotalItems = jsonCart.qty;
-		$scope.currentOz = jsonCart.oz;
-		$scope.cartReady = 1;
+	if ($cookies.getObject('cart')) {
+		if ($cookies.getObject('cart').items.length > 0) {
+			jsonCart = $cookies.getObject('cart');
+			console.log("cart found from $coookies");
+			console.log(jsonCart);
+			$scope.cartArr = jsonCart.items;
+			$scope.cartTotal = jsonCart.total;
+			$scope.cartTotalItems = jsonCart.qty;
+			$scope.currentOz = jsonCart.oz;
+			$scope.cartReady = 1;
+		} else {
+			$scope.cartArr = [];
+			$scope.cartTotal = 0;
+			$scope.cartTotalItems = 0;
+			$scope.currentOz = 0;
+			$scope.cartReady = 0;
+		}
 	} else {
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
@@ -22,9 +30,11 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 
 	$scope.openPencil = 0;
 	$scope.qtyEdit = function(that) {
+		console.log(that);
+		console.log($scope.qtyUpdated);
 		that.openPencil = !that.openPencil;
 		if ($scope.qtyUpdated === 0) {
-			$scope.cartArr.splice(that.$index);
+			$scope.cartArr.splice(that.$index, 1);
 		}
 		updateCart();
 		$scope.qtyUpdated = "";
@@ -108,8 +118,7 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 				$scope.cartTotalItems = 0;
 				$scope.currentOz = 0;
 				$scope.cartReady = 0;
-				$cookies.putObject('cart', '')
-				console.log($cookies.getObject('cart', ''));
+				$cookies.putObject('cart', "");
 			}, function fail(rspns) {
 				$scope.notSaved = 1;
 			});
@@ -149,7 +158,7 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 			oz: $scope.currentOz
 		};
 		$cookies.putObject('cart', jsonCartArr);
-		console.log($scookies.getObject('cart'));
+		console.log($cookies.getObject('cart'));
 	}
 
 });
