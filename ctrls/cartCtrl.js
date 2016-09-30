@@ -108,7 +108,8 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 				$scope.cartTotalItems = 0;
 				$scope.currentOz = 0;
 				$scope.cartReady = 0;
-				$cookies.putObject('cart', '');
+				$cookies.putObject('cart', '')
+				console.log($cookies.getObject('cart', ''));
 			}, function fail(rspns) {
 				$scope.notSaved = 1;
 			});
@@ -148,6 +149,7 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 			oz: $scope.currentOz
 		};
 		$cookies.putObject('cart', jsonCartArr);
+		console.log($scookies.getObject('cart'));
 	}
 
 });
