@@ -39,8 +39,10 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 		$scope.cartTotal = jsonCart.total;
 		$scope.cartTotalItems = jsonCart.qty;
 		$scope.currentOz = jsonCart.oz;
+		console.log($scope.cartArr);
 		updateCart();
 	} else {
+		console.log('jsonCart is undefined');
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
 		$scope.cartTotalItems = 0;
@@ -109,28 +111,35 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 	};
 
 	function updateCart() {
-		var total = 0;
-		$scope.cartTotal = $scope.cartArr.reduce(function(total, item) {
-			total += Number(item.cart.total);
-			return total;
-		}, total);
-		$scope.cartTotal = $scope.cartTotal.toFixed(2);
-		var total1 = 0;
-		$scope.cartTotalItems = $scope.cartArr.reduce(function(total1, item) {
-			total1 += Number(item.cart.qty);
-			return total1;
-		}, total1)
-		var total2 = 0;
-		$scope.currentOz = $scope.cartArr.reduce(function(total2, item) {
-			total2 += item.package.qty * item.oz * item.cart.qty;
-			return Math.round(total2);
-		}, total2);
 		console.log($scope.cartArr);
-		var tempCart = {
-			items: $scope.cartArr,
-			qty: $scope.cartTotalItems,
-			total: $scope.cartTotal,
-		};
-		$cookies.putObject('cart', tempCart);
+		if ($scope.cartArr.length < 0) {
+			$cookies.putObject('cart', '');
+		} else {
+			var total = 0;
+			$scope.cartTotal = $scope.cartArr.reduce(function(total, item) {
+				total += Number(item.cart.total);
+				return total;
+			}, total);
+			$scope.cartTotal = Math.round($scope.cartTotal * 1e2) / 1e2;
+			var total1 = 0;
+			$scope.cartTotalItems = $scope.cartArr.reduce(function(total1, item) {
+				total1 += Number(item.cart.qty);
+				return total1;
+			}, total1)
+			var total2 = 0;
+			$scope.currentOz = $scope.cartArr.reduce(function(total2, item) {
+				total2 += item.package.qty * item.oz * item.cart.qty;
+				return Math.round(total2);
+			}, total2);
+			console.log($scope.cartArr);
+			var tempCart = {
+				items: $scope.cartArr,
+				qty: $scope.cartTotalItems,
+				total: $scope.cartTotal,
+				oz: $scope.currentOz
+			};
+			$cookies.putObject('cart', tempCart);
+		}
 	}
+		
 });

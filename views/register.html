@@ -217,7 +217,7 @@
 					</select>
 				</div>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" id="register-address-3" pattern="^\b\d{5}(-\d{4})?\b$" ng-model="zip">
+					<input type="text" class="form-control" id="register-address-3" pattern="^\d{5}(?:[-\s]\d{4})?$" ng-model="zip">
 				</div>
 				<div class="col-sm-3" ng-show="verify">
 				</div>
@@ -263,7 +263,7 @@
 				<div ng-hide="hideDBID">{{databseID}}</div>
 			</div>
 			<div class="buttons">
-				<button class="btn btn-primary"><a href="#/signin">Sign In</a></button>
+				<button class="btn btn-default"><a href="#/signin">Sign In</a></button>
 			</div>
 		</div>
 	</div>

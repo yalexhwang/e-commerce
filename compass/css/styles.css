@@ -205,17 +205,19 @@
 
 /* line 1, ../sass/views/cart.scss */
 #page-cart {
-  background-color: #dcf1f6;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-store.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
 }
 
-/* line 6, ../sass/views/cart.scss */
+/* line 8, ../sass/views/cart.scss */
 #cart-wrapper {
   margin: 20px 15px 35px 15px;
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 11, ../sass/views/cart.scss */
+/* line 13, ../sass/views/cart.scss */
 #cart {
   background-color: white;
   border-radius: 8px;
@@ -223,40 +225,40 @@
   min-width: 390px;
 }
 
-/* line 18, ../sass/views/cart.scss */
+/* line 20, ../sass/views/cart.scss */
 #button-wrapper {
   text-align: center;
 }
-/* line 20, ../sass/views/cart.scss */
+/* line 22, ../sass/views/cart.scss */
 #button-wrapper .cart-button {
   margin: 5px 10px 20px 10px;
 }
 
-/* line 24, ../sass/views/cart.scss */
+/* line 26, ../sass/views/cart.scss */
 .pq {
   text-align: center;
   width: 10%;
 }
 
-/* line 28, ../sass/views/cart.scss */
+/* line 30, ../sass/views/cart.scss */
 .ttl {
   width: 12%;
   text-align: center;
 }
 
-/* line 32, ../sass/views/cart.scss */
+/* line 34, ../sass/views/cart.scss */
 .cart-img-cell {
   text-align: center;
 }
 
-/* line 35, ../sass/views/cart.scss */
+/* line 37, ../sass/views/cart.scss */
 .cart-img {
   max-width: 90%;
   max-height: 100px;
   margin: 5px;
 }
 
-/* line 40, ../sass/views/cart.scss */
+/* line 42, ../sass/views/cart.scss */
 .cart-qty-edit {
   width: 65%;
 }
@@ -331,65 +333,126 @@
 #account-wrapper {
   font-family: 'Oxygen', sans-serif;
   margin-top: 40px;
+  margin-bottom: 40px;
   padding: 20px;
+  padding-left: 10px;
   border-radius: 8px;
-  border: 1px solid #e1fcff;
+  border: 2px solid #e1fcff;
   background-color: white;
   min-height: 90%;
 }
-/* line 22, ../sass/views/account.scss */
+/* line 24, ../sass/views/account.scss */
 #account-wrapper h3 {
   margin-top: 30px;
   margin-bottom: 20px;
 }
 
-/* line 28, ../sass/views/account.scss */
+/* line 30, ../sass/views/account.scss */
 .account-section {
   margin-top: 40px;
   margin-bottom: 10px;
 }
 
-/* line 32, ../sass/views/account.scss */
+/* line 34, ../sass/views/account.scss */
+.account-section-edit {
+  font-size: 13px;
+}
+
+/* line 38, ../sass/views/account.scss */
 #account-home {
   margin-bottom: 10px;
 }
-/* line 33, ../sass/views/account.scss */
+/* line 39, ../sass/views/account.scss */
 #account-home h3 {
   margin-top: 5px;
 }
 
-/* line 39, ../sass/views/account.scss */
-#account-home-edit {
+/* line 45, ../sass/views/account.scss */
+.account-home-edit {
   padding: 20px 10px 10px 5px;
   border-radius: 8px;
   background-color: #f4f4ff;
 }
-/* line 43, ../sass/views/account.scss */
-#account-home-edit label {
+/* line 49, ../sass/views/account.scss */
+.account-home-edit label {
   font-size: 12px;
 }
 
-/* line 48, ../sass/views/account.scss */
-#info-table-wrapper {
-  width: 90%;
-}
-
-/* line 51, ../sass/views/account.scss */
-#plan-table-wrapper {
-  width: 90%;
-}
-
 /* line 54, ../sass/views/account.scss */
-#cart-table-wrapper {
-  width: 90%;
+.row-title {
+  width: 30%;
+  font-size: 12px;
 }
 
 /* line 58, ../sass/views/account.scss */
-.updatedPlanInfo {
-  color: #b90000;
+.inline-pencil {
+  font-size: 10px;
 }
 
 /* line 61, ../sass/views/account.scss */
+.form-message {
+  padding: 10px;
+  color: orange;
+  font-size: 13px;
+  font-family: 'Robato', sans-serif;
+  text-align: center;
+}
+
+/* line 69, ../sass/views/account.scss */
+#info-table-wrapper {
+  width: 95%;
+}
+
+/* line 72, ../sass/views/account.scss */
+#plan-table-wrapper {
+  width: 95%;
+}
+
+/* line 75, ../sass/views/account.scss */
+#cart-table-wrapper {
+  width: 95%;
+}
+/* line 77, ../sass/views/account.scss */
+#cart-table-wrapper table {
+  font-size: 13px;
+}
+
+/* line 81, ../sass/views/account.scss */
+.pq {
+  text-align: center;
+  width: 10%;
+}
+
+/* line 85, ../sass/views/account.scss */
+.ttl {
+  width: 12%;
+  text-align: center;
+}
+
+/* line 89, ../sass/views/account.scss */
+.cart-img-cell {
+  text-align: center;
+}
+
+/* line 92, ../sass/views/account.scss */
+.cart-img {
+  max-width: 90%;
+  max-height: 100px;
+  margin: 5px;
+}
+
+/* line 97, ../sass/views/account.scss */
+.cart-qty-edit {
+  width: 65%;
+}
+
+/* line 101, ../sass/views/account.scss */
+.updatedPlanInfo {
+  color: #b90000;
+  display: block;
+}
+
+/* line 105, ../sass/views/account.scss */
 .updatedPlanMessage {
   font-size: 13px;
 }
@@ -502,6 +565,7 @@
 /* line 9, ../sass/styles.scss */
 body {
   max-height: 100vh;
+  min-width: 450px;
 }
 
 /* line 13, ../sass/styles.scss */

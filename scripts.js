@@ -1,22 +1,29 @@
 var shopApp = angular.module('shopApp', ['ngRoute', 'ngCookies', 'duScroll', 'ui.bootstrap']);
 var url = "http://localhost:3000/";
 
-shopApp.run(function($rootScope, $cookies, $http) {
+shopApp.run(function($rootScope, $cookies, $http, $location, $route) {
 	$rootScope.$on("$locationChangeStart", function(event, next, current) {
+		var comingFrom = current.slice(-6);
+		var goingTo = next.slice(-7);
 		var userToken = $cookies.get('userToken');
 		if ((userToken) && (userToken !== "")) {
 			console.log('userToken from cookies found!');
 			$http.post(url + 'getUser', {
 				userToken: userToken
 			}).then(function success(rspns) {
-				console.log("rspns returned with success, verifying token pass...");
+				console.log("Verifying token with DB - rspns returned with success, verifying token pass...");
 				console.log(rspns);
 				if (rspns.data.passFail === 1) {
 					$rootScope.loggedIn = 1;
 					$rootScope.userData = rspns.data.obj;
 					console.log("$rootScope.loggedIn = " + $rootScope.loggedIn);
-					console.log("$rootScope.userData : ");
 					console.log($rootScope.userData);
+					if (comingFrom == 'signin') {
+						$location.path('/account');
+					}
+					if (goingTo == 'account') {
+						$route.reload();
+					}
 				} else {
 					console.log("token pass failed...");
 					console.log(rspns.data);
@@ -28,14 +35,34 @@ shopApp.run(function($rootScope, $cookies, $http) {
 				console.log("$rootScope.loggedIn = " + $rootScope.loggedIn);
 			});
 		} else {
-			console.log("userTOken from cookies not available!");
+			console.log("userToken from cookies not available!");
 			$rootScope.loggedIn = 0;
 			console.log("$rootScope.loggedIn = " + $rootScope.loggedIn);
 		}
 	});
 });
 
-shopApp.controller('indexCtrl', function($rootScope, $scope, $http) {
+shopApp.service('PWservice', function($http, $q) {
+	this.validate = function(password, username, item, newVal) {
+		var def = $q.defer();
+		$http.post(url +'validatePW', {
+			password: password,
+			username: username,
+			item: item,
+			newValue: newVal
+		}).then(function success(rspns) {
+			console.log(rspns.data);
+			def.resolve(rspns);
+		}, function fail(rspns) {
+			console.log('PWservice failed');
+			console.log(rspns);
+			def.reject(rspns);
+		});
+		return def.promise;
+	}
+});
+
+shopApp.controller('indexCtrl', function($rootScope, $scope) {
 	$scope.isCollapsed = 1;
 });
 
@@ -65,9 +92,10 @@ function deliveryDetailConverter(userDataPlan) {
 		}
 		return "Every " + dayInWeek;
 	} else if (dlvry.option1 === "Custom") {
+		console.log(dlvry.option1);
 		var interval = dlvry.option2.c_based.interval;
-		var starting = dlvry.option2.c_based.start; 
-		return "Every " + interval + " days <br/> from " + start;
+		var start = dlvry.option2.c_based.start.slice(0,10);
+		return "Every " + interval + " days, starting from " + start;
 	} 
 }
 
@@ -100,7 +128,8 @@ shopApp.config(function($routeProvider) {
 	})
 	.when('/account', {
 		templateUrl:'views/account.html',
-		controller: 'accountCtrl'
+		controller: 'accountCtrl',
+		reloadOnSearch: true
 	})
 	.when('/signout', {
 		templateUrl:'views/signout.html',

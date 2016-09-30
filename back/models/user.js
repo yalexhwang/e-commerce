@@ -29,7 +29,8 @@ var userSchema = new Schema({
 	cart: {
 		items: {type: Array},
 		total: {type: Number},
-		qty: {type: Number}
+		qty: {type: Number},
+		oz: {type: Number}
 	},
 	history: { type: Array },
 	token: { type: String },

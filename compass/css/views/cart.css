@@ -1,16 +1,18 @@
 /* line 1, ../../sass/views/cart.scss */
 #page-cart {
-  background-color: #dcf1f6;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-store.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   min-height: 100vh;
 }
 
-/* line 6, ../../sass/views/cart.scss */
+/* line 8, ../../sass/views/cart.scss */
 #cart-wrapper {
   margin: 20px 15px 35px 15px;
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 11, ../../sass/views/cart.scss */
+/* line 13, ../../sass/views/cart.scss */
 #cart {
   background-color: white;
   border-radius: 8px;
@@ -18,40 +20,40 @@
   min-width: 390px;
 }
 
-/* line 18, ../../sass/views/cart.scss */
+/* line 20, ../../sass/views/cart.scss */
 #button-wrapper {
   text-align: center;
 }
-/* line 20, ../../sass/views/cart.scss */
+/* line 22, ../../sass/views/cart.scss */
 #button-wrapper .cart-button {
   margin: 5px 10px 20px 10px;
 }
 
-/* line 24, ../../sass/views/cart.scss */
+/* line 26, ../../sass/views/cart.scss */
 .pq {
   text-align: center;
   width: 10%;
 }
 
-/* line 28, ../../sass/views/cart.scss */
+/* line 30, ../../sass/views/cart.scss */
 .ttl {
   width: 12%;
   text-align: center;
 }
 
-/* line 32, ../../sass/views/cart.scss */
+/* line 34, ../../sass/views/cart.scss */
 .cart-img-cell {
   text-align: center;
 }
 
-/* line 35, ../../sass/views/cart.scss */
+/* line 37, ../../sass/views/cart.scss */
 .cart-img {
   max-width: 90%;
   max-height: 100px;
   margin: 5px;
 }
 
-/* line 40, ../../sass/views/cart.scss */
+/* line 42, ../../sass/views/cart.scss */
 .cart-qty-edit {
   width: 65%;
 }

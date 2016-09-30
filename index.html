@@ -48,7 +48,7 @@
 					<li ng-show="loggedIn"><a ng-href="#/store">Store</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 					<li ng-hide="loggedIn"><a ng-href="#/signin">Sign In</a></li>
-					<li ng-show="loggedIn"><a ng-href="#/account">Account</a></li>
+					<li ng-show="loggedIn"><a ng-href="#/account" ng-click="reload()">Account</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/signout">Sign Out</a></li>
 				</ul>
 			</div>

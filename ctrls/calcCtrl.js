@@ -16,7 +16,6 @@ shopApp.controller('calcCtrl', function($scope, $rootScope, $location, $cookies,
 			$scope.step2ready = 1;
 		}
 	};
-
 	$scope.openStep2Msg = 0;
 	$scope.step3ready = 0;
 	$scope.openDay = 0;
@@ -95,14 +94,16 @@ shopApp.controller('calcCtrl', function($scope, $rootScope, $location, $cookies,
 	};
   //calculator - step3 - buttons
 	$scope.savePlan = function() {
-		console.log('savePlan()');
 		if ($rootScope.loggedIn) {
-			$http.post('saveMyPlan', {
+			var userToken = $cookies.get('userToken');
+			console.log(userToken);
+			$http.post(url + 'saveMyPlan', {
 				plan: plan,
-				token: $cookies.get('userToken')
+				token: userToken
 			}).then(function success(rspns) {
 				console.log(rspns.data);
 				alert("Your plan has been successfully updated.");
+				$location.path('/account');
 			}, function fail(rspns) {
 				console.log(rspns);
 				alert("Sorry, try again.");
@@ -113,7 +114,7 @@ shopApp.controller('calcCtrl', function($scope, $rootScope, $location, $cookies,
 			console.log($cookies.getObject('memberPlan'));
 			$location.path('/signin');
 		}
-	}
+	};
 	$scope.saveNewPlan = function() {
 		$cookies.putObject('newPlan', plan);
 		console.log("saveNewPlan - $cookies: ");

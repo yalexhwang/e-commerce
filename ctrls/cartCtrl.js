@@ -1,4 +1,7 @@
 shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $location) {
+	$scope.saved = 0;
+	$scope.notSaved = 0;
+
 	var jsonCart;
 	if ($cookies.getObject('cart') && ($cookies.getObject('cart') !== undefined)) {
 		jsonCart = $cookies.getObject('cart');
@@ -20,7 +23,6 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 	$scope.openPencil = 0;
 	$scope.qtyEdit = function(that) {
 		that.openPencil = !that.openPencil;
-		console.log("final " + $scope.qtyUpdated);
 		if ($scope.qtyUpdated === 0) {
 			$scope.cartArr.splice(that.$index);
 		}
@@ -44,19 +46,21 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 		$location.path('/store');
 	}
 	$scope.checkOut = function() {
+		var desc = $rootScope.userData.username + '\'s cart';
+		console.log(desc);
 		var handler = StripeCheckout.configure({
 			key: 'pk_test_542jVkNp2tVTQmzjscWkHT7u',
 			image: null,
 			locale: 'auto',
 			token: function(token) {
 				console.log("Token ID: " + token.id);
-				$http.post('http://localhost:3000/stripe', {
+				$http.post(url + 'stripe', {
 					amount: $scope.cartTotal * 100,
 					stripeToken: token.id,
-					token: $cookies.get('token')
+					description: desc
 				}).then(function success(rspns) {
-					if (rspns.data.passFail) {
-						console.log(rspns);
+					if (rspns.data.passFail == 1) {
+						console.log(rspns.obj);
 						console.log("Payment successful");
 						//Thank you user and redirect page
 					} else {
@@ -72,43 +76,55 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 		handler.open({
 			name: "HydroSource",
 			amount: $scope.cartTotal * 100,
-			description: "$scope.memberName's cart"
+			description: desc,
+			shippingAddress: true,
+			billingAddress: true
 		});
 	}
 
 	$scope.saveMyCart = function() {
-		updateCart();
-		var userToken = $cookies.getObject('userToken');
+		console.log('save my cart!');
+		var userToken = $cookies.get('userToken');
 		var cartToSave = {
 			items: $scope.cartArr,
 			qty: $scope.cartTotalItems,
-			total: $scope.cartTotal
+			total: $scope.cartTotal,
+			oz: $scope.currentOz
 		};
 		console.log(cartToSave);
-		if (cartToSave.cart.length > 0) {
+		if (cartToSave.items.length > 0) {
 			var now = Date.now();
+			console.log("usertoken");
+			console.log(userToken)
 			$http.post(url + 'saveCart', {
 				cart: cartToSave,
-				token: userToken.token
+				token: userToken
 			}).then(function success(rspns) {
 				console.log("Cart saved");
 				console.log(rspns);
 				$scope.saved = 1;
+				$scope.cartArr = [];
+				$scope.cartTotal = 0;
+				$scope.cartTotalItems = 0;
+				$scope.currentOz = 0;
+				$scope.cartReady = 0;
 				$cookies.putObject('cart', '');
 			}, function fail(rspns) {
-				console.log("Cart not saved");
-				console.log(rspns);
+				$scope.notSaved = 1;
 			});
 		} 
 	};
 
+	$scope.goToAccount = function() {
+		$location.path('/account');
+	}
 	function updateCart() {
 		var total = 0;
 		$scope.cartTotal = $scope.cartArr.reduce(function(total, item) {
 			total += Number(item.cart.total);
 			return total;
 		}, total);
-		$scope.cartTotal = $scope.cartTotal.toFixed(2);
+		$scope.cartTotal = Math.round($scope.cartTotal * 1e2) / 1e2;
 		var total1 = 0;
 		$scope.cartTotalItems = $scope.cartArr.reduce(function(total1, item) {
 			total1 += Number(item.cart.qty);
@@ -126,12 +142,12 @@ shopApp.controller('cartCtrl', function($scope, $rootScope, $cookies, $http, $lo
 		}
 		console.log($scope.cartArr);
 		var jsonCartArr = {
-			cart: $scope.cartArr,
+			items: $scope.cartArr,
 			total: $scope.cartTotal,
 			qty: $scope.cartTotalItems,
 			oz: $scope.currentOz
 		};
-		$cookies.putObject('cart',jsonCartArr);
+		$cookies.putObject('cart', jsonCartArr);
 	}
 
 });

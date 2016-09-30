@@ -11,13 +11,11 @@ shopApp.controller('signinCtrl', function($scope, $rootScope, $http, $location, 
 			username: username,
 			password: password
 		}).then(function success(rspns) {
-			console.log(rspns.data);
 			if (rspns.data.passFail === 1) {
 				var userToken = rspns.data.obj.token;
-				console.log(userToken);
-				$cookies.put('userToken', userToken);
-				$rootScope.loggedIn = 1;
-				$location.path('/account'); 
+				$cookies.put('userToken', userToken); 
+				console.log($cookies.get('userToken'));
+				$location.path('/');
 			} else {
 				console.log(rspns.data.status);
 				$scope.failed = 1;

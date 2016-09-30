@@ -60,7 +60,7 @@ router.post('/removeToken', function(req, res, next) {
 	});
 });
 
-router.post('/saveMyPlan', function(req,res, next) {
+router.post('/saveMyPlan', function(req, res, next) {
 	console.log(req.body);
 	var plan = req.body.plan;
 	var token = req.body.token;
@@ -109,12 +109,16 @@ router.post('/products', function(req, res, next) {
 
 router.post('/stripe', function(req, res, next) {
 	var amount = req.body.amount;
-	var source = req.body.stripeToke;
+	var source = req.body.stripeToken;
+	var desc = req.body.description;
+	console.log(amount);
+	console.log(source);
+	console.log(desc);
 	stripe.charges.create({
 		amount: amount,
 		currency: "USD",
 		soruce: source,
-		description: "Charge for someone someone"
+		description: desc
 	}).then(function paid(charge) {
 		console.log(charge);
 		res.json({
@@ -137,34 +141,62 @@ router.post('/validatePW', function(req, res, next) {
 	var password = req.body.password;
 	var item = req.body.item;
 	var newValue = req.body.newValue;
-	var obj;
-	switch(item) {
-		case 'username':
-			obj = {$set: {'username': newVal}};
-			break;
-		case 'email':
-			obj = {$set: {'email': newVal}};
-			break;
-		case 'password':
-			obj = 'password';
-			break;
-		case 'address':
-			obj = {$set: {'address': newVal}}
-			break;
-	}
-	User.findOne({'username': username}, {new: true}, function(err, docs) {
+	User.findOne({'username': username}, function(err, docs) {
+		console.log("findingOne");
 		if (err) {
 			console.log(err);
 			res.json({
 				passFail: 0,
 				status: "Connection failed"
 			});
+		console.log('newValue: ' + new Value);
 		} else {
 			var result = bcrypt.compareSync(password, docs.password);
 			if (result) {
-				if (obj === 'password') {
+				console.log("pw match success ~~~~~~~~~~~~");
+				if (item === 'password') {
 					var newPW = bcrypt.hashSync(newValue);
 					User.findOneAndUpdate({'username': username}, {$set: {'password': newPW}}, function(err, docs) {
+						console.log('updating password');
+						console.log(newValue);
+						console.log(newPW);
+						if (err) {console.log(err);}
+						else {
+							console.log(docs);
+							res.json({
+								passFail: 1,
+								obj: docs
+							});
+						}
+					});
+				} else if (item === 'email') {
+					User.findOneAndUpdate({'username': username}, {$set: {'email': newValue}}, function(err, docs) {
+						console.log('updating password');
+						if (err) {console.log(err);}
+						else {
+							console.log(docs);
+							res.json({
+								passFail: 1,
+								obj: docs
+							});
+						}
+					});
+				} else if (item === 'address') {
+					User.findOneAndUpdate({'username': username}, {$set: {'address':newValue}}, {'new':true}, function(err, docs) {
+						console.log('updating others');
+						if (err) {console.log(err);}
+						else {
+							console.log('finedOneandUpdated success')
+							console.log(docs);
+							res.json({
+								passFail: 1,
+								obj: docs
+							});
+						}
+					});
+				} else if (item === 'username') {
+					User.findOneAndUpdate({'username': username}, {$set: {'username':newValue}}, {'new':true}, function(err, docs) {
+						console.log('updating others');
 						if (err) {console.log(err);}
 						else {
 							console.log(docs);
@@ -175,21 +207,16 @@ router.post('/validatePW', function(req, res, next) {
 						}
 					});
 				} else {
-					User.findOneAndUpdate({'username': username}, obj, function(err, docs) {
-						if (err) {console.log(err);}
-						else {
-							console.log(docs);
-							res.json({
-								passFail: 1,
-								obj: docs
-							});
-						}
+					res.json({
+						passFail: 0,
+						status: 'item is not valid (username, email, address, password)'
 					});
 				}
 			} else {
+				console.log("password match failed ~~~~~~~");
 				res.json({
 					passFail: 0,
-					status: 'User name and password did not match.'
+					status: 'Password match failed'
 				});
 			}
 		}

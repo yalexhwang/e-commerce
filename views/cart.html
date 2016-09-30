@@ -7,6 +7,7 @@
 			</div>
 			<div id="cart">
 				<div class="alert alert-success" ng-show="saved">Cart saved in <a href="#/account">Account</a></div>
+				<div class="alert alert-warning" ng-show="notSaved">Sorry, something went wrong. Please try again.</div>
 				<table class="table">
 					<thead>
 						<tr>
@@ -47,7 +48,7 @@
 				<div id="button-wrapper">
 					<button type="button" class="btn btn-warning btn-sm cart-button" ng-show="cartReady" ng-click="resetCart()">Reset Cart</button>
 					<button type="button" class="btn btn-info btn-sm cart-button" ng-click="goToStore()">Back to Store</button>
-					<button type="button" class="btn btn-info btn-sm cart-button" ng-show="cartReady" ng-click="saveMyCart()">Save in My Cart</button>
+					<button type="button" class="btn btn-info btn-sm cart-button" ng-show="cartReady" ng-click="saveMyCart()">Save to My Cart</button>
 					<button type="button" class="btn btn-primary btn-sm cart-button" ng-show="cartReady"  ng-click="checkOut()">Check Out</button>
 				</div>
 			</div>

@@ -14,9 +14,11 @@
 #account-wrapper {
 	font-family: 'Oxygen', sans-serif;
 	margin-top: 40px;
+	margin-bottom: 40px;
 	padding: 20px;
+	padding-left: 10px;
 	border-radius: 8px;
-	border: 1px solid #e1fcff;
+	border: 2px solid #e1fcff;
 	background-color: white;
 	min-height: 90%;
 	h3 {
@@ -29,6 +31,10 @@
 	margin-top: 40px;
 	margin-bottom: 10px;
 }
+.account-section-edit {
+	font-size: 13px;
+}
+
 #account-home {
 	h3 {
 		margin-top: 5px;
@@ -36,7 +42,7 @@
 	margin-bottom: 10px;
 }
 
-#account-home-edit {
+.account-home-edit {
 	padding: 20px 10px 10px 5px;
 	border-radius: 8px;
 	background-color: #f4f4ff;
@@ -45,18 +51,56 @@
 	}
 }
 
+.row-title {
+	width: 30%;
+	font-size: 12px;
+}
+.inline-pencil {
+	font-size: 10px;
+}
+.form-message {
+	padding: 10px;
+	color: orange;
+	font-size: 13px;
+	font-family: 'Robato', sans-serif;
+	text-align: center;
+}
+
 #info-table-wrapper {
-	width: 90%;
+	width: 95%;
 }
 #plan-table-wrapper {
-	width: 90%;
+	width: 95%;
 }
 #cart-table-wrapper {
-	width: 90%;
+	width: 95%;
+	table {
+		font-size: 13px;
+	}
+}
+.pq {
+	text-align: center;
+	width: 10%;
+}
+.ttl {
+	width: 12%;
+	text-align: center;
+}
+.cart-img-cell {
+	text-align: center;
+}
+.cart-img {
+	max-width: 90%;
+	max-height: 100px;
+	margin: 5px;
+}
+.cart-qty-edit {
+	width: 65%;
 }
 
 .updatedPlanInfo {
 	color: #b90000;
+	display: block;
 }
 .updatedPlanMessage {
 	font-size: 13px;
