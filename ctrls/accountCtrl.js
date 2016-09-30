@@ -28,7 +28,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		$location.path('/signin');
 	}
 
-	if ($cookies.getObject('cart')) {
+	if (($cookies.getObject('cart')) && ($cookies.getObject('cart') !== ""))  {
 		if ($cookies.getObject('cart').items.length > 0) {
 			$scope.cartAvailable = 1;
 			console.log($cookies.getObject('cart'));
