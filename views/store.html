@@ -2,6 +2,9 @@
 	<div class="col-sm-12" id="bottom-half">
 		<h2 class="store-title">Store</h2>
 		<div id="store-wrapper">
+			<div id="water-goal-bar" class="col-sm-8 col-sm-offset-2">
+				<uib-progressbar max="totalOz" value="currentOz" type="info" title="waterGoalBar"><span style="color:white; white-space:nowrap;">{{currentOz}} / {{totalOz}} fl.oz.</span></uib-progressbar>
+			</div>
 			<div id="store">
 				<div ng-repeat="item in products track by $index" class="col-xs-12 col-sm-6 col-md-4 col-lg-3 item">
 					<img class="item-img" ng-init="changingIndex = 0" ng-src="{{item.img[changingIndex]}}" ng-mouseenter="changingIndex = changingIndex + 1" ng-mouseleave="changingIndex = changingIndex - 1">

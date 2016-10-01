@@ -1,19 +1,4 @@
 shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $location) {
-	//Water Goal, if cart is not found
-	// var supplyOz = $cookies.get('totalSupply');
-	// console.log(supplyOz);
-	// $scope.currentOz = 0;
-	// function currentOz() {
-	// 	var returnCurrentOz = function() {
-	// 		var total = 0;
-	// 		var currentTotal = $scope.cartArr.reduce(function(total, item) {
-	// 			total += item.package.qty * item.oz;
-	// 			return total;
-	// 		}, total)
-	// 		return currentOz();
-	// 	}
-	// 	$scope.currentOz = returnCurrentOz;
-	// }
 
 	//how to set water goal?
 	//if cart found from user's db (my cart)
@@ -47,8 +32,22 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 		$scope.cartTotal = 0;
 		$scope.cartTotalItems = 0;
 		$scope.currentOz = 0;
-
 	}
+	$scope.totalOz = $rootScope.userData.plan.supplyOz;
+
+
+	function currentOz() {
+		var returnCurrentOz = function() {
+			var total = 0;
+			var currentTotal = $scope.cartArr.reduce(function(total, item) {
+				total += item.package.qty * item.oz;
+				return total;
+			}, total)
+			return currentOz();
+		}
+		$scope.currentOz = returnCurrentOz;
+	}
+
 
 	$scope.products = [];
 	$http.post(url + 'products').then(function success(rspns) {

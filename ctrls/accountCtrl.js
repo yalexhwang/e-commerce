@@ -223,7 +223,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		if ($scope.updatedName) {
 			name = $scope.updatedName;
 		} else {
-			name = $scope.user.name;
+			name = $scope.user.address.name;
 		}
 		if ($scope.updatedAdd1) {
 			add1 = $scope.updatedAdd1;
@@ -319,6 +319,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 			$scope.openUpdatedPlanInfo = 0;
 			$scope.planUpdate = "";
 			$route.reload();
+			$location.path('/signin');
 		}, function fail(rspns) {
 			console.log(rspns);
 			alert("Sorry, try again.");

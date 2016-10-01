@@ -7,26 +7,26 @@
   min-width: 400px;
 }
 
-/* line 43, ../../sass/views/store.scss */
+/* line 15, ../../sass/views/store.scss */
 .store-title {
   text-align: center;
   font-family: "Oxygen", sans-serif;
   margin: 40px 20px 30px 20px;
 }
 
-/* line 49, ../../sass/views/store.scss */
+/* line 21, ../../sass/views/store.scss */
 #store-wrapper {
   width: 90%;
   margin: auto;
 }
 
-/* line 54, ../../sass/views/store.scss */
+/* line 26, ../../sass/views/store.scss */
 #store-buttons-wrapper {
   text-align: justify;
   margin-bottom: 10px;
 }
 
-/* line 58, ../../sass/views/store.scss */
+/* line 30, ../../sass/views/store.scss */
 #store {
   font-family: 'Roboto', sans-serif;
   display: inline-block;
@@ -38,7 +38,7 @@
   margin-bottom: 50px;
 }
 
-/* line 69, ../../sass/views/store.scss */
+/* line 41, ../../sass/views/store.scss */
 .item {
   display: inline-block;
   height: 300px;
@@ -49,30 +49,30 @@
   text-align: center;
 }
 
-/* line 79, ../../sass/views/store.scss */
+/* line 51, ../../sass/views/store.scss */
 .item-img {
   height: 60%;
   margin: auto;
 }
 
-/* line 84, ../../sass/views/store.scss */
+/* line 56, ../../sass/views/store.scss */
 .item-title {
   margin: 20px 10px 10px 10px;
   font-size: 15px;
   line-height: 18px;
 }
 
-/* line 90, ../../sass/views/store.scss */
+/* line 62, ../../sass/views/store.scss */
 .item-price {
   font-size: 16px;
 }
 
-/* line 94, ../../sass/views/store.scss */
+/* line 66, ../../sass/views/store.scss */
 .item-buy {
   margin: 10px;
 }
 
-/* line 98, ../../sass/views/store.scss */
+/* line 70, ../../sass/views/store.scss */
 #display {
   width: 40px;
   display: inline-block;
