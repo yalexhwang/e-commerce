@@ -16,6 +16,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		console.log($rootScope.userData);
 		$scope.user = $rootScope.userData;
 		$scope.user.plan.delivery.detail = deliveryDetailConverter($rootScope.userData.plan);
+		$scope.totalOz = $scope.user.plan.supplyOz;
 		$scope.cartArr = $rootScope.userData.cart.items;
 		$scope.cartTotal = $rootScope.userData.cart.total;
 		$scope.cartTotalItems = $rootScope.userData.cart.qty;
@@ -294,7 +295,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 	}
 
 	var planUpdate = $cookies.getObject('memberPlan');
-	console.log(planUpdate);
 	if (planUpdate) {
 		$scope.planUpdate = planUpdate;
 		$scope.planUpdate.delivery.detail = deliveryDetailConverter(planUpdate);
@@ -350,14 +350,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 			that.openPencil = 1;
 		}	
 	};
-	// $scope.qtyEdit = function(that) {
-	// 	that.openPencil = !that.openPencil;
-	// 	if ($scope.qtyUpdated === 0) {
-	// 		$scope.cartArr.splice(that.$index);
-	// 	}
-	// 	updateCart();
-	// 	$scope.qtyUpdated = "";
-	// };
 	$scope.updated = function(that) {
 		var index = that.$index;
 		$scope.cartArr[index].cart.qty = $scope.qtyUpdated;
@@ -367,6 +359,106 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		updateCart();
 	};
 
+	$scope.removeAll = function() {
+		$scope.cartArr = [];
+		$scope.cartTotal = "";
+		$scope.cartTotalItems = "";
+		$scope.currentOz = "";
+		updateCart();
+		saveMyCart();
+	};
+
+	$scope.checkOut = function() {
+		var desc = $rootScope.userData.username + '\'s cart';
+		var userEmail = $rootScope.userData.email;
+		// if ($rootScope.userData.stripe.length > 0) {
+			var handler = StripeCheckout.configure({
+				key: 'pk_test_542jVkNp2tVTQmzjscWkHT7u',
+				image: null,
+				locale: 'auto',
+				token: function(token) {
+					console.log("Token ID: " + token.id);
+					$http.post(url + 'stripe', {
+						amount: $scope.cartTotal * 100,
+						stripeToken: token.id,
+						description: desc
+					}).then(function success(rspns) {
+						if (rspns.data.passFail == 1) {
+							console.log(rspns.obj);
+							console.log("Payment successful");
+							//Thank you user and redirect page
+							// var charge = rspns.obj;
+							var charge = {
+								random: 'test'
+							};
+							var cart = $rootScope.userData.cart;
+							$cookies.putObject('charge', charge);
+							$cookies.putObject('cartPurchased', cart);
+							console.log($cookies.getObject('cartPurchased'));
+							$location.path('/checkout');
+						} else {
+							console.log(rspns.obj);
+							console.log("Payment failed");
+							//test-------remove later
+							// var charge = rspns.obj;
+							var charge = {
+								random: 'test'
+							};
+							var cart = $rootScope.userData.cart;
+							$cookies.putObject('charge', charge);
+							$cookies.putObject('cartPurchased', cart);
+							console.log($cookies.getObject('cartPurchased'));
+							$location.path('/checkout');
+						}
+					}, function fail(rspns) {
+						console.log("Connection to payment failed");
+						console.log(rspns.obj);
+					});
+				}
+			});
+			handler.open({
+				name: "HydroSource",
+				amount: $scope.cartTotal * 100,
+				description: desc
+			});
+		// } else {
+		// 	var handler = StripeCheckout.configure({
+		// 		key: 'pk_test_542jVkNp2tVTQmzjscWkHT7u',
+		// 		image: null,
+		// 		locale: 'auto',
+		// 		token: function(token) {
+		// 			console.log("Token ID: " + token.id);
+		// 			$http.post(url + 'firstStripe', {
+		// 				amount: $scope.cartTotal * 100,
+		// 				stripeToken: token.id,
+		// 				description: userEmail
+		// 			}).then(function success(rspns) {
+		// 				if (rspns.data.passFail == 1) {
+		// 					console.log(rspns.obj);
+		// 					console.log("(firstStripe) Payment successful");
+		// 					//direct to confirmation page
+		// 					$cookies.putObject('charge');
+		// 					$cookies.putObject('cartPurchased')
+		// 					$location.path('/checkout');
+		// 				} else {
+		// 					console.log(rspns.obj);
+		// 					console.log("(firstStripe) Payment failed");
+		// 				}
+		// 			}, function fail(rspns) {
+		// 				console.log("(firstStripe) Connection to payment failed");
+		// 				console.log(rspns.obj);
+		// 			});
+		// 		}
+		// 	});
+		// 	handler.open({
+		// 		name: "HydroSource",
+		// 		amount: $scope.cartTotal * 100,
+		// 		description: desc,
+		// 		shippingAddress: true,
+		// 		billingAddress: true
+		// 	});
+		// }	
+	};
 	function saveMyCart() {
 		console.log('save my cart!');
 		var userToken = $cookies.get('userToken');

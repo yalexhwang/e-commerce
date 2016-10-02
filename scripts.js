@@ -63,7 +63,6 @@ shopApp.service('PWservice', function($http, $q) {
 });
 
 shopApp.controller('indexCtrl', function($rootScope, $scope) {
-	$scope.isCollapsed = 1;
 });
 
 function deliveryDetailConverter(userDataPlan) {
@@ -134,6 +133,10 @@ shopApp.config(function($routeProvider) {
 	.when('/signout', {
 		templateUrl:'views/signout.html',
 		controller: 'signoutCtrl'
+	})
+	.when('/checkout', {
+		templateUrl:'views/checkout.html',
+		controller: 'checkoutCtrl'
 	})
 	.otherwise({
 		redirectTo: '/'

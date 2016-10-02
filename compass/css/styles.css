@@ -226,39 +226,44 @@
 }
 
 /* line 20, ../sass/views/cart.scss */
+#water-drop {
+  text-align: right;
+}
+
+/* line 24, ../sass/views/cart.scss */
 #button-wrapper {
   text-align: center;
 }
-/* line 22, ../sass/views/cart.scss */
+/* line 26, ../sass/views/cart.scss */
 #button-wrapper .cart-button {
   margin: 5px 10px 20px 10px;
 }
 
-/* line 26, ../sass/views/cart.scss */
+/* line 30, ../sass/views/cart.scss */
 .pq {
   text-align: center;
   width: 10%;
 }
 
-/* line 30, ../sass/views/cart.scss */
+/* line 34, ../sass/views/cart.scss */
 .ttl {
   width: 12%;
   text-align: center;
 }
 
-/* line 34, ../sass/views/cart.scss */
+/* line 38, ../sass/views/cart.scss */
 .cart-img-cell {
   text-align: center;
 }
 
-/* line 37, ../sass/views/cart.scss */
+/* line 41, ../sass/views/cart.scss */
 .cart-img {
   max-width: 90%;
   max-height: 100px;
   margin: 5px;
 }
 
-/* line 42, ../sass/views/cart.scss */
+/* line 46, ../sass/views/cart.scss */
 .cart-qty-edit {
   width: 65%;
 }
@@ -562,24 +567,51 @@
     opacity: 1;
   }
 }
-/* line 9, ../sass/styles.scss */
+/* line 1, ../sass/views/checkout.scss */
+#page-checkout {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-store.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Oxygen', sans-serif;
+}
+
+/* line 10, ../sass/views/checkout.scss */
+#checkout-wrapper h3 {
+  text-align: center;
+  margin: 30px 10px 20px 10px;
+}
+
+/* line 15, ../sass/views/checkout.scss */
+#checkout-table-wrapper {
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+/* line 20, ../sass/views/checkout.scss */
+#checkout-table-wrapper p {
+  font-size: 12px;
+}
+
+/* line 11, ../sass/styles.scss */
 body {
   max-height: 100vh;
   min-width: 450px;
 }
 
-/* line 13, ../sass/styles.scss */
+/* line 15, ../sass/styles.scss */
 #nav {
   background-color: transparent;
   font-family: 'Libre Franklin', sans-serif;
   font-size: 13px;
 }
-/* line 17, ../sass/styles.scss */
+/* line 19, ../sass/styles.scss */
 #nav #brand {
   font-family: 'Oxygen', sans-serif;
 }
 
-/* line 22, ../sass/styles.scss */
+/* line 24, ../sass/styles.scss */
 #view {
   min-width: 400px;
 }

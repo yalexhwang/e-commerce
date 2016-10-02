@@ -1,0 +1,26 @@
+/* line 1, ../../sass/views/checkout.scss */
+#page-checkout {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-store.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  font-family: 'Oxygen', sans-serif;
+}
+
+/* line 10, ../../sass/views/checkout.scss */
+#checkout-wrapper h3 {
+  text-align: center;
+  margin: 30px 10px 20px 10px;
+}
+
+/* line 15, ../../sass/views/checkout.scss */
+#checkout-table-wrapper {
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+/* line 20, ../../sass/views/checkout.scss */
+#checkout-table-wrapper p {
+  font-size: 12px;
+}

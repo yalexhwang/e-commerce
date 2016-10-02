@@ -3,11 +3,16 @@
 		<div id="cart-wrapper">
 			<div class="page-header">
 				<h3>Cart</h3>
-				<p ng-hide="loggedIn">Please sign in to check out. If you are new member, please register <a href="#/register"><strong>here.</strong></a></p>
 			</div>
 			<div id="cart">
-				<div class="alert alert-success" ng-show="saved">Cart saved in <a href="#/account">Account</a></div>
-				<div class="alert alert-warning" ng-show="notSaved">Sorry, something went wrong. Please try again.</div>
+				<div id="cartMsg">
+					<div class="alert alert-success" ng-show="saved">Cart saved in <a href="#/account">Account</a></div>
+					<div class="alert alert-warning" ng-show="notSaved">Sorry, something went wrong. Please try again.</div>
+				</div>
+				<div class="col-sm-2 col-xs-1" id="water-drop"><span class="glyphicon glyphicon-tint"></span></div>
+				<div class="col-sm-8 col-xs-10">
+					<uib-progressbar max="totalOz" value="currentOz" type="info" title="waterGoalBar"><span style="color:white; white-space:nowrap;">{{currentOz}} / {{totalOz}} fl.oz.</span></uib-progressbar>
+				</div>
 				<table class="table">
 					<thead>
 						<tr>
@@ -49,7 +54,6 @@
 					<button type="button" class="btn btn-warning btn-sm cart-button" ng-show="cartReady" ng-click="resetCart()">Reset Cart</button>
 					<button type="button" class="btn btn-info btn-sm cart-button" ng-click="goToStore()">Back to Store</button>
 					<button type="button" class="btn btn-info btn-sm cart-button" ng-show="cartReady" ng-click="saveMyCart()">Save to My Cart</button>
-					<button type="button" class="btn btn-primary btn-sm cart-button" ng-show="cartReady"  ng-click="checkOut()">Check Out</button>
 				</div>
 			</div>
 		</div>
