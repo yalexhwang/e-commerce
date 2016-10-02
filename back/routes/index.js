@@ -14,7 +14,6 @@ var configT = require('../config/config');
 //configT.secretTestKey;
 var stripe = require('stripe')(configT.secretTestKey);
 
-
 router.post('/getUser', function(req, res, next) {
 	var token = req.body.userToken;
 	User.findOne({'token': token}, function(err, docs) {
@@ -107,6 +106,64 @@ router.post('/products', function(req, res, next) {
 	});
 });
 
+router.post('/firstStripe', function(req, res, next) {
+	var amount = req.body.amount;
+	var source = req.body.stripeToken;
+	var email = req.body.description;
+	console.log(amount);
+	console.log(source);
+	console.log(email);
+	stripe.customers.create({
+		source: source, 
+		email: userEmail,
+		currency: "USD"
+	}).then(function(customer) {
+		console.log(customer);
+		// !!!! Save Stripe customer.id to DB for later use
+		// User.findOne({'token': token}, function(err, docs) {
+		// 	if (err) {
+		// 		console.log(err);
+		// 		res.json({
+		// 			passFail: 0,
+		// 			status: "DB connection failed"
+		// 		});
+		// 	} else {
+		// 		if (docs == null) {
+		// 			res.json({
+		// 				passFail: 0,
+		// 				status: "badToken"
+		// 			});
+		// 		} else {
+		// 			res.json({
+		// 				passFail: 1,
+		// 				obj: docs
+		// 			});
+		// 		}
+		// 	}
+		// });
+		return stripe.charges.create({
+			amount: amount,
+			currency: "USD",
+			customer: customer.id
+		});
+	}).then(function paid(charge) {
+		console.log("charged~~~~~~~~");
+		console.log(charge);
+		res.json({
+			passFail: 1,
+			status: "Paid",
+			obj: charge
+		});
+	}, function failed(err) {
+		res.json({
+			passFail: 0,
+			status: "Failed",
+			obj: err
+		});
+	});
+});
+
+
 router.post('/stripe', function(req, res, next) {
 	var amount = req.body.amount;
 	var source = req.body.stripeToken;
@@ -120,6 +177,7 @@ router.post('/stripe', function(req, res, next) {
 		soruce: source,
 		description: desc
 	}).then(function paid(charge) {
+		console.log('charge successful');
 		console.log(charge);
 		res.json({
 			passFail: 1,
@@ -127,6 +185,8 @@ router.post('/stripe', function(req, res, next) {
 			obj: charge
 		});
 	}, function failed(err) {
+		console.log('failed');
+		console.log(err);
 		res.json({
 			passFail: 0,
 			status: "Failed",

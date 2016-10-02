@@ -32,6 +32,7 @@ var userSchema = new Schema({
 		qty: {type: Number},
 		oz: {type: Number}
 	},
+	stripe: { type: String },
 	history: { type: Array },
 	token: { type: String },
 }, {timestamps: true});
