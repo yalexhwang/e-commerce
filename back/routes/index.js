@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var mongoUrl = "mongodb://localhost:27017/ecommerce";
+var mongoUrl = "mongodb://localhost:27017/hydrosource";
 var User = require('../models/user');
 var Item = require('../models/item');
 mongoose.connect(mongoUrl);

@@ -1,24 +1,6 @@
 shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $location) {
-
-	//how to set water goal?
-	//if cart found from user's db (my cart)
-	//if cart found from cookies (not in db), then get Oz from cookies as well
-	
-	// if (supplyOz) {
-	// 	$scope.totalSupply = supplyOz;
-	// 	$scope.body1 = 1;
-	// 	$scope.body2 = 0;
-	// } else {
-	// 	$scope.body1 = 0;
-	// 	$scope.body2 = 1;
-	// }
-
-	//Store--------------------------------------
-	
 	//cookies set for cartTotal, cartTotalItems and cartArr
 	var jsonCart = $cookies.getObject('cart');
-	console.log('jsonCart from $cookies retrieved:');
-	console.log(jsonCart);
 	if ((jsonCart) && (jsonCart !== undefined)) {
 		$scope.cartArr = jsonCart.items;
 		$scope.cartTotal = jsonCart.total;
@@ -35,7 +17,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 	}
 	$scope.totalOz = $rootScope.userData.plan.supplyOz;
 
-
 	function currentOz() {
 		var returnCurrentOz = function() {
 			var total = 0;
@@ -48,7 +29,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 		$scope.currentOz = returnCurrentOz;
 	}
 
-
 	$scope.products = [];
 	$http.post(url + 'products').then(function success(rspns) {
 		var all = rspns.data.obj;
@@ -60,7 +40,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 			all[i].productImg = all[i].img[0];
 			$scope.products.push(all[i]);
 		}
-		console.log($scope.products);
 	}, function fail(rspns) {
 		console.log(rspns);
 	});	
@@ -70,7 +49,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 		if (item.cart.qty === 0) {
 			return false;
 		}
-		console.log(item);
 		var matchingIndex;
 		if ($scope.cartArr.length > 0) {
 			for (var i = 0; i < $scope.cartArr.length; i++) {
