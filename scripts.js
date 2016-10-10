@@ -1,5 +1,5 @@
 var shopApp = angular.module('shopApp', ['ngRoute', 'ngCookies', 'duScroll', 'ui.bootstrap']);
-var url = "http://localhost:3000/";
+var url = "http://www.yalexhwang.com:3000";
 
 shopApp.run(function($rootScope, $cookies, $http, $location, $route) {
 	$rootScope.$on("$locationChangeStart", function(event, next, current) {
@@ -128,7 +128,6 @@ shopApp.config(function($routeProvider) {
 	.when('/account', {
 		templateUrl:'views/account.html',
 		controller: 'accountCtrl',
-		reloadOnSearch: true
 	})
 	.when('/signout', {
 		templateUrl:'views/signout.html',
