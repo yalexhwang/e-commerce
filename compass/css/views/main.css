@@ -4,14 +4,15 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  width: 100%;
   margin: 0px;
   padding: 0px;
 }
-/* line 10, ../../sass/views/main.scss */
+/* line 11, ../../sass/views/main.scss */
 #main-jumbotron #jumbo-box-wrapper {
   margin-top: 30px;
 }
-/* line 13, ../../sass/views/main.scss */
+/* line 14, ../../sass/views/main.scss */
 #main-jumbotron .jumbo-box {
   text-align: center;
   opacity: 1;
@@ -21,23 +22,23 @@
   -ms-transition: fadein 4s;
   transition: fadein 4s;
 }
-/* line 23, ../../sass/views/main.scss */
+/* line 24, ../../sass/views/main.scss */
 #main-jumbotron .imgOn {
   background-image: url("../images/water-in-body.png");
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.8;
 }
-/* line 29, ../../sass/views/main.scss */
+/* line 30, ../../sass/views/main.scss */
 #main-jumbotron #title {
   text-align: center;
   margin-bottom: 30px;
 }
-/* line 32, ../../sass/views/main.scss */
+/* line 33, ../../sass/views/main.scss */
 #main-jumbotron #title h1 {
   font-family: 'Oxygen', sans-serif;
 }
-/* line 35, ../../sass/views/main.scss */
+/* line 36, ../../sass/views/main.scss */
 #main-jumbotron #title p {
   font-size: 16px;
   font-weight: 300;
@@ -45,7 +46,12 @@
   text-shadow: white 0px 0px 6px;
 }
 
-/* line 44, ../../sass/views/main.scss */
+/* line 45, ../../sass/views/main.scss */
+#how-row {
+  padding: 0px;
+}
+
+/* line 49, ../../sass/views/main.scss */
 #how-wrapper {
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/blue.jpg");
   background-repeat: no-repeat;
@@ -55,14 +61,14 @@
   font-family: 'Roboto', sans-serif;
 }
 
-/* line 52, ../../sass/views/main.scss */
+/* line 57, ../../sass/views/main.scss */
 #how-title {
   font-family: 'Oxygen', sans-serif;
 }
 
-/* line 57, ../../sass/views/main.scss */
+/* line 62, ../../sass/views/main.scss */
 .how-step {
-  min-height: 200px;
+  height: 200px;
   text-align: left;
   margin: 20px;
   padding: 15px 20px;
@@ -71,7 +77,7 @@
   font-color: #181717;
 }
 
-/* line 67, ../../sass/views/main.scss */
+/* line 72, ../../sass/views/main.scss */
 .arrow {
   font-size: 25px;
   margin: 30px;

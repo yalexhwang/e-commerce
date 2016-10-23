@@ -3,6 +3,7 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100vh;
+	width: 100%;
 	margin: 0px;
 	padding: 0px;
 
@@ -41,6 +42,10 @@
 		}
 }
 
+#how-row {
+	padding: 0px;
+}
+
 #how-wrapper {
 	background-image: linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0.4)), url('../images/blue.jpg');	
 	background-repeat: no-repeat;
@@ -55,7 +60,7 @@
 
 
 .how-step {
-	min-height: 200px;
+	height: 200px;
 	text-align: left;
 	margin: 20px;
 	padding: 15px 20px;
