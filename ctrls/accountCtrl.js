@@ -13,7 +13,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 	$scope.notSaved = 0;
 
 	if ($rootScope.loggedIn === 1) {
-		console.log($rootScope.userData);
 		$scope.user = $rootScope.userData;
 		$scope.user.plan.delivery.detail = deliveryDetailConverter($rootScope.userData.plan);
 		$scope.totalOz = $scope.user.plan.supplyOz;
@@ -30,8 +29,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		$location.path('/signin');
 	}
 
-	console.log("cookies cart found ~~~~~~~~~~");
-	console.log($cookies.getObject('cart'));
 	if ($cookies.getObject('cart')) {
 		if ($cookies.getObject('cart').items.length > 0) {
 			$scope.cartAvailable = 1;
@@ -121,7 +118,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 						$scope.openEditMyInfoMessage = 1;
 					}
 				}, function fail(rspns) {
-					console.log(rspns);
 					$scope.editMyInfoMessage = "Sorry, something went wrong. Please try again.";
 					$scope.openEditMyInfoMessage = 1;
 				});
@@ -321,14 +317,11 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 			$route.reload();
 			$location.path('/signin');
 		}, function fail(rspns) {
-			console.log(rspns);
 			alert("Sorry, try again.");
 		});
 	};
 	$scope.discardUpdatedPlanInfo = function() {
 		$cookies.putObject('memberPlan', '');
-		console.log("discardUpdatedPlanInfo: ");
-		console.log($cookies.getObject('memberPlan'));
 		$scope.planUpdate = "";
 		$scope.openUpdatedPlanInfo = 0;
 		$route.reload();
@@ -337,8 +330,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 // My Cart -----------------------------------
 	$scope.openPencil = 0;
 	$scope.qtyEdit = function(that) {
-		console.log(that);
-		console.log($scope.qtyUpdated);
 		if (that.openPencil == 1) {
 			if ($scope.qtyUpdated === 0) {
 				$scope.cartArr.splice(that.$index, 1);
@@ -355,7 +346,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		$scope.cartArr[index].cart.qty = $scope.qtyUpdated;
 		var itemTotalUpdated = $scope.cartArr[index].cart.qty * $scope.cartArr[index].price;
 		$scope.cartArr[index].cart.total = itemTotalUpdated.toFixed(2);
-		console.log($scope.cartArr);
 		updateCart();
 	};
 
@@ -377,7 +367,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 				image: null,
 				locale: 'auto',
 				token: function(token) {
-					console.log("Token ID: " + token.id);
 					$http.post(url + 'stripe', {
 						amount: $scope.cartTotal * 100,
 						stripeToken: token.id,
@@ -460,7 +449,6 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 		// }	
 	};
 	function saveMyCart() {
-		console.log('save my cart!');
 		var userToken = $cookies.get('userToken');
 		var cartToSave = {
 			items: $scope.cartArr,
@@ -468,13 +456,10 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 			total: $scope.cartTotal,
 			oz: $scope.currentOz
 		};
-		console.log(cartToSave);
 		$http.post(url + 'saveCart', {
 			cart: cartToSave,
 			token: userToken
 		}).then(function success(rspns) {
-			console.log("Cart saved");
-			console.log(rspns);
 			$scope.saved = 1;
 		}, function fail(rspns) {
 			$scope.notSaved = 1;

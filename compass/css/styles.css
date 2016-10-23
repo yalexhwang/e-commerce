@@ -125,29 +125,28 @@
   background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6)), url("../images/water-store.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  min-width: 400px;
 }
 
-/* line 15, ../sass/views/store.scss */
+/* line 8, ../sass/views/store.scss */
 .store-title {
   text-align: center;
   font-family: "Oxygen", sans-serif;
   margin: 40px 20px 30px 20px;
 }
 
-/* line 21, ../sass/views/store.scss */
+/* line 14, ../sass/views/store.scss */
 #store-wrapper {
   width: 90%;
   margin: auto;
 }
 
-/* line 26, ../sass/views/store.scss */
+/* line 19, ../sass/views/store.scss */
 #store-buttons-wrapper {
   text-align: justify;
   margin-bottom: 10px;
 }
 
-/* line 30, ../sass/views/store.scss */
+/* line 23, ../sass/views/store.scss */
 #store {
   font-family: 'Roboto', sans-serif;
   display: inline-block;
@@ -159,7 +158,7 @@
   margin-bottom: 50px;
 }
 
-/* line 41, ../sass/views/store.scss */
+/* line 34, ../sass/views/store.scss */
 .item {
   display: inline-block;
   height: 300px;
@@ -170,30 +169,30 @@
   text-align: center;
 }
 
-/* line 51, ../sass/views/store.scss */
+/* line 44, ../sass/views/store.scss */
 .item-img {
   height: 60%;
   margin: auto;
 }
 
-/* line 56, ../sass/views/store.scss */
+/* line 49, ../sass/views/store.scss */
 .item-title {
   margin: 20px 10px 10px 10px;
   font-size: 15px;
   line-height: 18px;
 }
 
-/* line 62, ../sass/views/store.scss */
+/* line 55, ../sass/views/store.scss */
 .item-price {
   font-size: 16px;
 }
 
-/* line 66, ../sass/views/store.scss */
+/* line 59, ../sass/views/store.scss */
 .item-buy {
   margin: 10px;
 }
 
-/* line 70, ../sass/views/store.scss */
+/* line 63, ../sass/views/store.scss */
 #display {
   width: 40px;
   display: inline-block;
@@ -594,24 +593,23 @@
   font-size: 12px;
 }
 
-/* line 11, ../sass/styles.scss */
+/* line 12, ../sass/styles.scss */
 body {
   max-height: 100vh;
-  min-width: 450px;
+  min-width: 320px;
 }
 
-/* line 15, ../sass/styles.scss */
+/* line 16, ../sass/styles.scss */
 #nav {
   background-color: transparent;
   font-family: 'Libre Franklin', sans-serif;
   font-size: 13px;
 }
-/* line 19, ../sass/styles.scss */
+/* line 20, ../sass/styles.scss */
 #nav #brand {
   font-family: 'Oxygen', sans-serif;
 }
 
-/* line 24, ../sass/styles.scss */
-#view {
-  min-width: 400px;
+@media (min-width: 768px) {
+  text-align: left;
 }

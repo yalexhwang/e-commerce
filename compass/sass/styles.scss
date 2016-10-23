@@ -1,3 +1,4 @@
+@import 'views/mixins';
 @import 'views/main';
 @import 'views/store';
 @import 'views/cart';
@@ -10,7 +11,7 @@
 
 body {
 	max-height: 100vh;
-	min-width: 450px;
+	min-width: 320px;
 }
 #nav {
 	background-color: transparent;
@@ -22,5 +23,17 @@ body {
 }
 
 #view {
-	min-width: 400px;
 }
+
+ 		@include breakpoint(320) {
+			
+		}
+		@include breakpoint(480) {
+
+		}
+		@include breakpoint(768) {
+			text-align: left;
+		}
+		@include breakpoint(992) {
+
+		}

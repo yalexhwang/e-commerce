@@ -27,10 +27,6 @@ shopApp.controller('calcCtrl', function($scope, $rootScope, $location, $cookies,
 		var whichDay = $scope.dayForWeekly;
 		var howManyDays = $scope.daysForCustom;
 		var startingDate = $scope.startingDate;
-		console.log(frequency);
-		console.log(whichDay);
-		console.log(howManyDays);
-		console.log(startingDate);
 		if (frequency == undefined) {
 			$scope.openStep2Msg = 1;
 		} else if ((frequency === "Weekly") && (whichDay == undefined)) {
@@ -96,29 +92,22 @@ shopApp.controller('calcCtrl', function($scope, $rootScope, $location, $cookies,
 	$scope.savePlan = function() {
 		if ($rootScope.loggedIn) {
 			var userToken = $cookies.get('userToken');
-			console.log(userToken);
 			$http.post(url + 'saveMyPlan', {
 				plan: plan,
 				token: userToken
 			}).then(function success(rspns) {
-				console.log(rspns.data);
 				alert("Your plan has been successfully updated.");
 				$location.path('/account');
 			}, function fail(rspns) {
-				console.log(rspns);
 				alert("Sorry, try again.");
 			});
 		} else {
 			$cookies.putObject('memberPlan', plan);
-			console.log("savePlan - $cookies: ");
-			console.log($cookies.getObject('memberPlan'));
 			$location.path('/signin');
 		}
 	};
 	$scope.saveNewPlan = function() {
 		$cookies.putObject('newPlan', plan);
-		console.log("saveNewPlan - $cookies: ");
-		console.log($cookies.getObject('newPlan'));
 		$location.path('/register');
 	};
 	

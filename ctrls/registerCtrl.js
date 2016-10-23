@@ -111,11 +111,7 @@ shopApp.controller('registerCtrl', function($scope, $rootScope, $cookies, $http,
 				}	
 			};
 		}
-		console.log(username);
-		console.log(password);
-		console.log(email);
-		console.log(address);
-		console.log(plan);
+
 		if (password !== confirm) {
 			$scope.verifyPW = 1;
 		} else {
@@ -139,8 +135,6 @@ shopApp.controller('registerCtrl', function($scope, $rootScope, $cookies, $http,
 				$scope.email = "";
 				$scope.name = "";
 			}, function fail(rspns) {
-				console.log("Registration failed.");
-				console.log(rspns.data);
 			});
 		}
 

@@ -7,17 +7,12 @@ shopApp.run(function($rootScope, $cookies, $http, $location, $route) {
 		var goingTo = next.slice(-7);
 		var userToken = $cookies.get('userToken');
 		if ((userToken) && (userToken !== "")) {
-			console.log('userToken from cookies found!');
 			$http.post(url + 'getUser', {
 				userToken: userToken
 			}).then(function success(rspns) {
-				console.log("Verifying token with DB - rspns returned with success, verifying token pass...");
-				console.log(rspns);
 				if (rspns.data.passFail === 1) {
 					$rootScope.loggedIn = 1;
 					$rootScope.userData = rspns.data.obj;
-					console.log("$rootScope.loggedIn = " + $rootScope.loggedIn);
-					console.log($rootScope.userData);
 					if (comingFrom == 'signin') {
 						$location.path('/account');
 					}
@@ -25,19 +20,12 @@ shopApp.run(function($rootScope, $cookies, $http, $location, $route) {
 						$route.reload();
 					}
 				} else {
-					console.log("token pass failed...");
-					console.log(rspns.data);
 				}
 			}, function fail(rspns) {
-				console.log("rspns returned with error...");
-				console.log(rspns);
 				$rootScope.loggedIn = 0;
-				console.log("$rootScope.loggedIn = " + $rootScope.loggedIn);
 			});
 		} else {
-			console.log("userToken from cookies not available!");
 			$rootScope.loggedIn = 0;
-			console.log("$rootScope.loggedIn = " + $rootScope.loggedIn);
 		}
 	});
 });
@@ -51,11 +39,8 @@ shopApp.service('PWservice', function($http, $q) {
 			item: item,
 			newValue: newVal
 		}).then(function success(rspns) {
-			console.log(rspns.data);
 			def.resolve(rspns);
 		}, function fail(rspns) {
-			console.log('PWservice failed');
-			console.log(rspns);
 			def.reject(rspns);
 		});
 		return def.promise;
@@ -91,7 +76,6 @@ function deliveryDetailConverter(userDataPlan) {
 		}
 		return "Every " + dayInWeek;
 	} else if (dlvry.option1 === "Custom") {
-		console.log(dlvry.option1);
 		var interval = dlvry.option2.c_based.interval;
 		var start = dlvry.option2.c_based.start.slice(0,10);
 		return "Every " + interval + " days, starting from " + start;

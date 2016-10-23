@@ -6,10 +6,8 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 		$scope.cartTotal = jsonCart.total;
 		$scope.cartTotalItems = jsonCart.qty;
 		$scope.currentOz = jsonCart.oz;
-		console.log($scope.cartArr);
 		updateCart();
 	} else {
-		console.log('jsonCart is undefined');
 		$scope.cartArr = [];
 		$scope.cartTotal = 0;
 		$scope.cartTotalItems = 0;
@@ -41,7 +39,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 			$scope.products.push(all[i]);
 		}
 	}, function fail(rspns) {
-		console.log(rspns);
 	});	
 	
 	$scope.removeItem = function(index) {
@@ -88,7 +85,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 	};
 
 	function updateCart() {
-		console.log($scope.cartArr);
 		if ($scope.cartArr.length < 0) {
 			$cookies.putObject('cart', '');
 		} else {
@@ -108,7 +104,6 @@ shopApp.controller('storeCtrl', function($scope, $rootScope, $cookies, $http, $l
 				total2 += item.package.qty * item.oz * item.cart.qty;
 				return Math.round(total2);
 			}, total2);
-			console.log($scope.cartArr);
 			var tempCart = {
 				items: $scope.cartArr,
 				qty: $scope.cartTotalItems,

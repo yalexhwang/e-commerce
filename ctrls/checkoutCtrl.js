@@ -6,7 +6,6 @@ shopApp.controller('checkoutCtrl', function($scope, $rootScope, $cookies, $locat
 		$scope.cartTotalItems = cart.qty;
 		$scope.cartTotal = cart.total;
 		var now = new Date();
-		console.log(now);
 		var mo = now.getMonth() + 1;
 		var day = now.getDay();
 		var yr = now.getFullYear();
