@@ -62,7 +62,7 @@
 
 /* line 57, ../../sass/views/main.scss */
 .how-step {
-  height: 200px;
+  min-height: 200px;
   text-align: left;
   margin: 20px;
   padding: 15px 20px;

@@ -25,15 +25,3 @@ body {
 #view {
 }
 
- 		@include breakpoint(320) {
-			
-		}
-		@include breakpoint(480) {
-
-		}
-		@include breakpoint(768) {
-			text-align: left;
-		}
-		@include breakpoint(992) {
-
-		}
