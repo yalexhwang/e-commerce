@@ -3,6 +3,7 @@
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)), url("../images/blue.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #AFE5F7;
   height: 150vh;
   -webkit-animation: fadein 4s;
   -moz-transition: fadein 4s;
@@ -12,24 +13,24 @@
   padding-top: 50px;
 }
 
-/* line 14, ../../sass/views/calc.scss */
+/* line 15, ../../sass/views/calc.scss */
 #intake-calculator {
   margin-top: 30px;
   border-radius: 8px;
   font-family: 'Oxygen', sans-serif;
 }
-/* line 18, ../../sass/views/calc.scss */
+/* line 19, ../../sass/views/calc.scss */
 #intake-calculator h5 {
   margin-left: 20px;
   margin-bottom: 16px;
 }
 
-/* line 24, ../../sass/views/calc.scss */
+/* line 25, ../../sass/views/calc.scss */
 .message {
   color: #b90000;
 }
 
-/* line 28, ../../sass/views/calc.scss */
+/* line 29, ../../sass/views/calc.scss */
 .step-wrapper {
   text-align: left;
   padding: 15px;
@@ -38,12 +39,12 @@
   border: #bbfaff 1px solid;
   font-color: #181717;
 }
-/* line 37, ../../sass/views/calc.scss */
+/* line 38, ../../sass/views/calc.scss */
 .step-wrapper h4 {
   margin-bottom: 15px;
 }
 
-/* line 42, ../../sass/views/calc.scss */
+/* line 43, ../../sass/views/calc.scss */
 .table-item {
   font-size: 13px;
 }
