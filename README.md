@@ -4,7 +4,7 @@ HydroSource is a water delivery subscription service that I made up for an eComm
 A unique feature is the water intake calculator, which gives the ideal amount of water to be consumed, 
 given the user's weight and desired hydration level. <i>Developed as a MVC Single Page Application, using MEAN stack.</i>
 
-<link>http://www.yalexhwang.com/hydrosource</link>
+<link>www.yalexhwang.com/hydrosource</link>
 
 ##Technologies & Frameworks 
 - HTML
