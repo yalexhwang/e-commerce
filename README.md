@@ -46,7 +46,7 @@ depending on sign in/out status. Menu items exist in index page, outside of view
 To fix the problem, a run block was used with $rootScope.$on($locationChangeStart, ...), which validate token, determines sign in/out status that is set to a variable in $rootScope. 
 
 
-###Future Implementation
+##Future Implementation
 - Purchase confimration E-mail
   - Automatically send a confirmation email with delivery details
 - Water consumption reminder
