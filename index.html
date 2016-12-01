@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="ui-bootstrap-tpls.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>
 	<script type="text/javascript" src="ctrls/mainCtrl.js"></script>
+	<script type="text/javascript" src="ctrls/tourCtrl.js"></script>
 	<script type="text/javascript" src="ctrls/storeCtrl.js"></script>
 	<script type="text/javascript" src="ctrls/cartCtrl.js"></script>
 	<script type="text/javascript" src="ctrls/accountCtrl.js"></script>
@@ -44,6 +45,7 @@
 			<div id="mainMenu" class="navbar-collapse" ng-class="{collapse: isCollapsed}" aria-expanded="true">
 				<ul class="nav navbar-nav navbar-right">
 					<li ng-hide="loggedIn"><a ng-href="#/calculator">Get Started</a></li>
+					<li ng-hide="loggedIn"><a ng-href="#/tour">Take a Tour</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/store">Store</a></li>
 					<li ng-show="loggedIn"><a ng-href="#/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 					<li ng-hide="loggedIn"><a ng-href="#/signin">Sign In</a></li>

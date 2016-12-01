@@ -64,18 +64,26 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 			if (($scope.userNamePW !== undefined) && ($scope.userNamePW !== "")) {
 				var pw = $scope.userNamePW;
 				var username = $scope.user.username;
-				PWservice.validate(pw, username, 'username', $scope.updatedUserName)
-				.then(function success(rspns) {
-					if (rspns.data.passFail === 1) {
-						$location.path('/signin');
-					} else {
-						$scope.editMyInfoMessage = "Please re-enter your password.";
+				if (username !== "test") {
+					PWservice.validate(pw, username, 'username', $scope.updatedUserName)
+					.then(function success(rspns) {
+						if (rspns.data.passFail === 1) {
+							$location.path('/signin');
+						} else {
+							$scope.editMyInfoMessage = "Please re-enter your password.";
+							$scope.openEditMyInfoMessage = 1;
+						}
+					}, function fail(rspns) {
+						$scope.editMyInfoMessage = "Sorry, something went wrong. Please try again.";
 						$scope.openEditMyInfoMessage = 1;
-					}
-				}, function fail(rspns) {
-					$scope.editMyInfoMessage = "Sorry, something went wrong. Please try again.";
-					$scope.openEditMyInfoMessage = 1;
-				});
+					});
+				} else {
+					alert("You are signed in using the guest account. You cannot change the username.");
+					$scope.updatedUserName = "";
+					$scope.userNamePW = "";
+					$scope.openUserNameEdit = 0;
+					$scope.openEditMyInfoMessage = 0;
+				}
 			} else {
 				$scope.editMyInfoMessage = "Please enter your password.";
 				$scope.openEditMyInfoMessage = 1;
@@ -109,6 +117,7 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 			if (($scope.emailPW !== undefined) && ($scope.emailPW !== "")) {
 				var pw = $scope.emailPW;
 				var username = $scope.user.username;
+
 				PWservice.validate(pw, username, 'email', $scope.updatedEmail)
 				.then(function success(rspns) {
 					if (rspns.data.passFail === 1) {
@@ -156,18 +165,27 @@ shopApp.controller('accountCtrl', function($scope, $rootScope, $cookies, $http, 
 					if ($scope.updatedPW === $scope.updatedPWConfirm) {
 						var pw = $scope.pwPW;
 						var username = $scope.user.username;
-						PWservice.validate(pw, username, 'password', $scope.updatedPW)
-						.then(function success(rspns) {
-							if (rspns.data.passFail === 1) {
-								$location.path('/signin');
-							} else {
-								$scope.editMyInfoMessage = "Please re-enter your password.";
+						if (username !== "test") {
+							PWservice.validate(pw, username, 'password', $scope.updatedPW)
+							.then(function success(rspns) {
+								if (rspns.data.passFail === 1) {
+									$location.path('/signin');
+								} else {
+									$scope.editMyInfoMessage = "Please re-enter your password.";
+									$scope.openEditMyInfoMessage = 1;
+								}
+							}, function fail(rspns) {
+								$scope.editMyInfoMessage = "Sorry, something went wrong. Please try again.";
 								$scope.openEditMyInfoMessage = 1;
-							}
-						}, function fail(rspns) {
-							$scope.editMyInfoMessage = "Sorry, something went wrong. Please try again.";
-							$scope.openEditMyInfoMessage = 1;
-						});
+							});
+						} else {
+							alert("You are signed in using the guest account. You cannot change the username.");
+							$scope.updatedPW = "";
+							$scope.updatedPWConfirm = "";
+							$scope.pwPW = "";
+							$scope.openPWEdit = 0;
+							$scope.openEditMyInfoMessage = 0;
+						}
 					} else {
 						$scope.editMyInfoMessage = "Failed to confirm new password. Please try again.";
 						$scope.openEditMyInfoMessage = 1;

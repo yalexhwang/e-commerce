@@ -3,6 +3,7 @@ var url = "http://www.yalexhwang.com:3000/";
 
 shopApp.run(function($rootScope, $cookies, $http, $location, $route) {
 	$rootScope.$on("$locationChangeStart", function(event, next, current) {
+		console.log(current);
 		var comingFrom = current.slice(-6);
 		var goingTo = next.slice(-7);
 		var userToken = $cookies.get('userToken');
@@ -108,6 +109,10 @@ shopApp.config(function($routeProvider) {
 	.when('/signin', {
 		templateUrl:'views/signin.html',
 		controller: 'signinCtrl'
+	})
+	.when('/tour', {
+		templateUrl:'views/tour.html',
+		controller: 'tourCtrl'
 	})
 	.when('/account', {
 		templateUrl:'views/account.html',
