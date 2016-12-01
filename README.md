@@ -4,6 +4,8 @@ HydroSource is a water delivery subscription service that I made up for an eComm
 A unique feature is the water intake calculator, which gives the ideal amount of water to be consumed, 
 given the user's weight and desired hydration level. <i>Developed as a MVC Single Page Application, using MEAN stack.</i>
 
+<link>www.yalexhwang.com/hydrosource</link>
+
 ##Technologies & Frameworks 
 - HTML
 - CSS/SASS
@@ -44,7 +46,7 @@ depending on sign in/out status. Menu items exist in index page, outside of view
 To fix the problem, a run block was used with $rootScope.$on($locationChangeStart, ...), which validate token, determines sign in/out status that is set to a variable in $rootScope. 
 
 
-###Future Implementation
+##Future Implementation
 - Purchase confimration E-mail
   - Automatically send a confirmation email with delivery details
 - Water consumption reminder
