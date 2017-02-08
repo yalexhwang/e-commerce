@@ -38,6 +38,12 @@ when user access Account page, user is given an option to go back to temporary c
 <img src="http://www.yalexhwang.com/compass/images/hydrosource3.png" width="460" height="auto">
 <img src="http://www.yalexhwang.com/compass/images/hydrosource4.png" width="460" height="auto">
 
+##Code Snippets
+
+<img src="http://www.yalexhwang.com/img-stash/snippet-hydro-1.png" width="460" height="auto">
+<img src="http://www.yalexhwang.com/img-stash/snippet-hydro-2.png" width="460" height="auto">
+<img src="http://www.yalexhwang.com/img-stash/snippet-hydro-3.png" width="460" height="auto">
+
 ##Notes
 - **bcrypt (npm)**: I used a Node.js library to hash a password before saving it in the database. I learned the basic concept of bcrypt, how to read a shadow password (prefix for bcrypt hash, cost parameter, salt and hash). 
 
